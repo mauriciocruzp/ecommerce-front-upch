@@ -1,0 +1,26 @@
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    color: #17181C;
+}
+
+.input {
+    width: 278px;
+    height: 32px;
+
+    background: #FFFFFF;
+    border: 2px solid rgba(4, 150, 255, 0.4);
+    border-radius: 12px;
+
+    padding-left: 8px;
+}
+
+.input:hover {
+    border: 2px solid rgba(0, 107, 166, 1);
+}
