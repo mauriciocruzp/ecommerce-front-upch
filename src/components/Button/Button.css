@@ -1,12 +1,13 @@
 .button {
     border: 0;
-    width: 143px;
+
     height: 32px;
     border-radius: 15px;
     font-style: normal;
     font-weight: 600;
     font-size: 13px;
     text-align: center;
+    cursor: pointer;
 }
 
 .primary-button {   
