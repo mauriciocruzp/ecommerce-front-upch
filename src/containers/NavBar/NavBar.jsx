@@ -5,7 +5,7 @@ import Button from '../../components/Button/Button';
 function NavBar(props) {
   return (
     <nav className='nav-bar'>
-      <div className="name">
+      <div className="name-b">
         <a href='#'><h1>Ecommerce UPCH</h1></a>
       </div>
       <div className="form-container">

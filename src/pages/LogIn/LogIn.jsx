@@ -1,13 +1,13 @@
 import NavBar from '../../containers/NavBar/NavBar';
 import Input from '../../components/Input/Input';
-import './SignUp.css'
+import './LogIn.css'
 import Button from '../../components/Button/Button';
 
-function SignUp() {
+function LogIn() {
   return (
     <>
       {/* <NavBar /> */}
-      <div className="sign-up">
+      <div className="log-in">
         <div className="w-container">
           <div className="head">
             <h1>Ecommerce UPCH</h1>
@@ -35,4 +35,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default LogIn;
