@@ -11,14 +11,14 @@
 }
 
 .input {
-    width: 278px;
-    height: 32px;
+        width: 278px;
+        height: 32px;
 
-    background: #FFFFFF;
-    border: 2px solid rgba(4, 150, 255, 0.4);
-    border-radius: 12px;
+        background: #FFFFFF;
+        border: 2px solid rgba(4, 150, 255, 0.4);
+        border-radius: 12px;
 
-    padding-left: 8px;
+        padding-left: 8px;
 }
 
 .input:hover {
