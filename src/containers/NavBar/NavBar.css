@@ -12,7 +12,7 @@
 }
 
 .form-container {
-    margin: 0 140px 0 162px;
+    margin: 0 133px 0 162px;
 }
 
 .profile-img {
@@ -29,7 +29,7 @@
     border: 0;
 
     position: absolute;
-    right: 930px;
+    right: 920px;
     top: 30px;
     border-radius: 50%;
     background: #D9D9D9;
