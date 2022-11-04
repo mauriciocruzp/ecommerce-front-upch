@@ -1,30 +1,35 @@
 .button {
     border: 0;
-    width: 143px;
+
     height: 32px;
-    border-radius: 15px;
+    border-radius: 12px;
     font-style: normal;
     font-weight: 600;
     font-size: 13px;
     text-align: center;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .primary-button {   
-    background: #006BA6;
+    background: #2567FF;
     color: #FFFFFF;
 }
 
 .secondary-button {
-    background: #D9D9D9;
-    color: #006BA6;
+    background: #3F8EFC;
+    color: #FFFFFF;
 }
 
 .danger-button {
-    background: #D81159;
+    background: #DD1D19;
     color: #FFFFFF;
 }
 
 .warning-button {
-    background: #FFBC42;
+    background: #F1C70B;
     color: #FFFFFF;
 }
