@@ -10,7 +10,7 @@ function ProductDetail(props) {
         <div className="pd-container">
           <div className="img-product-container">
             <div className="img-product-div">
-              <img src={props.img} alt={props.productName} />
+              <img className='img-product' src={props.img} alt={props.productName} />
             </div>
           </div>
           <div className="info-product-container">
@@ -23,7 +23,7 @@ function ProductDetail(props) {
             <div className="price-details">
               <h1>${props.price}</h1>
             </div>
-            <input value={1} type='number' id='number-add' name='number-add'/>
+            <input min={1} defaultValue={1} type='number' id='number-add' name='number-add'/>
             <Button text='Agregar al carrito' width='238px' classNameButton='primary-button' />
           </div>
         </div>
