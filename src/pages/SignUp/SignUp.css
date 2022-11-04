@@ -1,42 +1,43 @@
-.sign-up{
-    width: 320px;
-    height: 430px;
-    top: 50%;
-    left: 50%;
-    
+.sign-up {
     width: 100%;
-    display: flex;
     height: 100vh;
+
+    display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
 }
 
-.w-container{
-    width: 950px;
-    height: 540px;
-    background: cornsilk;
-    border-radius: 15px;
+.su-container {
+    width: 963px;
+    height: 588px;
+
+    background: #FFFFFF;
+    border-radius: 12px;
+
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    flex-direction: column;
 }
 
-.head{
+.su-head {
     text-align: center;
     margin-bottom: 30px;
 }
-.have-account .form-signup-container {
+
+.have-account{
 
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
-.form-signup-container{
+
+.form-signup-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.have-account{
+
+.have-account {
     flex-direction: row;
 }

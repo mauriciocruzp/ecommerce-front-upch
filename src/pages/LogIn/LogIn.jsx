@@ -11,7 +11,7 @@ function LogIn() {
         <div className="w-container">
           <div className="head">
             <h1>Ecommerce UPCH</h1>
-            <h1>Inicia sesión</h1>
+            <h2>Inicia sesión</h2>
           </div>
           <div className="form-login-container">
             <form action="">
