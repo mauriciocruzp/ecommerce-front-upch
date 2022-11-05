@@ -1,0 +1,25 @@
+.np-input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.np-input {
+    border: 0;
+    border-radius: 12px;
+
+    background: #FFFFFF;
+    border: 2px solid rgba(37, 103, 255, 1);
+    border-radius: 12px;
+
+    padding-left: 8px;
+
+}
+
+.np-input:hover {
+    border: 2px solid rgba(63, 142, 252, 1);
+}
+
+.np-input:focus-visible {
+    outline: none;
+    border: 2px solid rgba(63, 142, 252, 1);
+}
