@@ -16,7 +16,7 @@ function NewProduct(props) {
           </div>
           <div className="product-details">
             <div className="cont-left">
-              <div className="img-product-div">
+              <div className="img-pd-div">
                 <img src={props.img} alt={props.productName} />
               </div>
               <Button classNameButton='primary-button' text="Agregar imagen" />
