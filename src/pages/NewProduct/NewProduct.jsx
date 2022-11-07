@@ -16,14 +16,14 @@ function NewProduct(props) {
           </div>
           <div className="product-details">
             <div className="cont-left">
-              <div className="img-pd-div">
-                <img src={props.img} alt={props.productName} />
+              <div className="img-np-div">
+                <Input type='file' id='p-image' />
               </div>
-              <Button classNameButton='primary-button' text="Agregar imagen" />
+              <Button classNameButton='primary-button' text="Agregar imagen" width='398px' />
               <div className="product-category">
                 <label>Categoría
                   <br />
-                  <select>
+                  <select className="category-select">
                     <option value="">Categoría</option>
                     <option value="">Tecnología</option>
                     <option value="">Alimentos</option>
@@ -31,7 +31,7 @@ function NewProduct(props) {
                   </select>
                 </label>
               </div>
-              <Button classNameButton="danger-button" text="Cancelar" />
+              <Button classNameButton="danger-button" text="Cancelar" width='398px'/>
             </div>
             <div className="cont-right">
               <div className="product-info">
@@ -41,15 +41,12 @@ function NewProduct(props) {
                 <div className="details">
                   <NewProductInput text="Descripción:" width='680px' height='120px' type="text" />
                 </div>
-                <div className="inventory">
-                  <Input text="Cantidad de inventario" type="number" />
-                </div>
-                <div className="price">
-                  <NewProductInput text="Precio" width='51px' height='32px' type="text" />
+                <div className="inventory-price">
+                  <NewProductInput text="Cantidad en inventario:" type="number" width='80px' height='32px' />
+                  <NewProductInput text="Precio (MXN):" width='120px' height='32px' type="number" />
                 </div>
                 <div className="upload-confirmation-product">
-                  <Input type="checkbox" text="Al publicar un producto, acepto los términos y condiciones de uso del servicio proporcionado" />
-                  <Button classNameButton="primary-button" text="Subir producto" />
+                  <Button classNameButton="primary-button" text="Subir producto" width='398px'/>
                 </div>
               </div>
             </div>

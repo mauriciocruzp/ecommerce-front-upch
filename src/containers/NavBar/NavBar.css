@@ -13,6 +13,7 @@
 
 .form-container {
     margin: 0 133px 0 162px;
+    width: 635px;
 }
 
 .profile-img {
@@ -41,4 +42,9 @@
     flex-direction: row;
     align-items: center;
     
+}
+
+.upload-confirmation-product {
+    width: 100%;
+    margin-top: 60px;
 }
