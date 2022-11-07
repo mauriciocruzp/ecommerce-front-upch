@@ -1,7 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getListProduct } from '../../api/services/product';
 import Card from '../Card/Card';
-import { useState } from 'react';
 
 function CardsContainer() {
   const [products, setProducts] = useState([]);
@@ -16,7 +15,7 @@ function CardsContainer() {
 
   function renderProducts() {
     return products.map((product) => {
-      return <Card product={product} />;
+      return <Card key={product.id} product={product} />;
     });
   }
 

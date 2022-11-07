@@ -1,16 +1,20 @@
-import Input from '../../components/Input/Input';
-import './LogIn.css';
-import Button from '../../components/Button/Button';
-import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { signIn } from '../../api/services/auth';
-import { useContext } from 'react';
-import AuthContext from '../../context/AuthContext/AuthContext';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import * as Yup from 'yup';
+import { signIn } from '../../api/services/auth';
+import Button from '../../components/Button/Button';
+import Input from '../../components/Input/Input';
+import useAuth from '../../hooks/useAuth';
+import './LogIn.css';
 
 function LogIn() {
 
-  const { setAccessToken } = useContext(AuthContext);
+  const { setAccessToken, authState } = useAuth();
+
+  useEffect(() => {
+    console.log(authState);
+  }, [authState]);
 
   const navigate = useNavigate();
 

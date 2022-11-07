@@ -1,4 +1,4 @@
-import axiosInstance from "../axios";
+import { axiosInstance } from "../axios";
 
 export async function createUser(
     email,
