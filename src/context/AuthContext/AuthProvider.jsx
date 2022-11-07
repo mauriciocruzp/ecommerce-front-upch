@@ -5,7 +5,7 @@ import AuthContext from './AuthContext';
 
 const INITIAL_STATE = {
   accessToken: null,
-  isAthenticathed: false,
+  isAuthenticated: false,
 };
 
 const AuthProvider = ({ children }) => {
@@ -28,7 +28,7 @@ const AuthProvider = ({ children }) => {
       type: 'SET_ACCESS_TOKEN',
       payload: accessToken,
     });
-    localStorage.setItem('accessToken', authState.accessToken);
+    localStorage.setItem('accessToken', accessToken);
   };
 
   const deleteToken = () => {
