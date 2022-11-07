@@ -1,0 +1,64 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "productName": "Tarjeta de video NVIDIA GeForce RTX 4090 24GB / WINDFORCE Geforce RTX 4090",
+            "linkImage": "https://ddtech.mx/assets/uploads/f1cc55f716f02f52f65f99080f4361ef.jpg",
+            "price": "42,999.00"
+        },
+        {
+            "id": 2,
+            "productName": "Procesador AMD Ryzen 9 5900X / 12 Core / 24 Thread / 3.7GHz / 4.8GHz Boost",
+            "linkImage": "https://ddtech.mx/assets/uploads/f1cc55f716f02f52f65f99080f4361ef.jpg",
+            "price": "7,599.00"
+        },
+        {
+            "id": 3,
+            "productName": "Unidad de estado solido M.2 Nvme WD GREEN SN350 1TB / WDS100T3G0C",
+            "linkImage": "https://ddtech.mx/assets/uploads/f1cc55f716f02f52f65f99080f4361ef.jpg",
+            "price": "1,399.00"
+        },
+        {
+            "id": 4,
+            "productName": "Memoria RAM 16GB 3200MHz Kingston Fury Beast DDR4 RGB SPECIAL EDITION",
+            "linkImage": "https://ddtech.mx/assets/uploads/f1cc55f716f02f52f65f99080f4361ef.jpg",
+            "price": "1,269.00"
+        },
+        {
+            "id": 5,
+            "productName": "Monitor Gamer Gigabyte 24inch Gaming G24F 2 / HDMIx2 - DP / 1ms / 165Hz / FHD / AMD FreeSync",
+            "linkImage": "https://ddtech.mx/assets/uploads/f1cc55f716f02f52f65f99080f4361ef.jpg",
+            "price": "3,799.00"
+        },
+        {
+            "id": 6,
+            "productName": "Google Nest Mini 2 / Asistente de Voz / Inalámbrico / WiFi / Bluetooth / GA00638-US",
+            "linkImage": "https://ddtech.mx/assets/uploads/f1cc55f716f02f52f65f99080f4361ef.jpg",
+            "price": "599.00"
+        },
+        {
+            "id": 7,
+            "productName": "Silla Gamer Deportiva Corsair T3 Rush Carbon - CF-9010029-WW",
+            "linkImage": "https://ddtech.mx/assets/uploads/f1cc55f716f02f52f65f99080f4361ef.jpg",
+            "price": "4,399.00"
+        },
+        {
+            "id": 8,
+            "productName": "Router Gamer Huawei WIFI AX3 / Gigabit / Dual Core / 4 Antenas / Wi-Fi 6 / WS7100 Blanco",
+            "linkImage": "https://ddtech.mx/assets/uploads/f1cc55f716f02f52f65f99080f4361ef.jpg",
+            "price": "999.00"
+        },
+        {
+            "id": 9,
+            "productName": "Mouse Gamer Ambidiestro / Razer Viper / Negro / Con Cable / Recertificado / RZ01-02550100-R3U1",
+            "linkImage": "https://ddtech.mx/assets/uploads/f1cc55f716f02f52f65f99080f4361ef.jpg",
+            "price": "599.00"
+        },
+        {
+            "id": 10,
+            "productName": "Monitor Eye Care ASUS VA27DCP / 27 pulgadas / Full HD / IPS / Sin marco",
+            "linkImage": "https://ddtech.mx/assets/uploads/f1cc55f716f02f52f65f99080f4361ef.jpg",
+            "price": "4,599.00"
+        }
+    ]
+}
