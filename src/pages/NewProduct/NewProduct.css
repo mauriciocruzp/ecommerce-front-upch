@@ -20,6 +20,7 @@
     flex-direction: column;
     align-items: flex-start;
 }
+
 .cont-right {
     margin-left: 130px;
 }
@@ -34,17 +35,7 @@
 
 
 .img-np-div {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 9px 59px;
-    gap: 10px;
-
-    width: 302px;
-    height: 311px;
-
-    background: #D9D9D9;
-    border-radius: 12px;
+    margin-bottom: 30px;
 }
 
 .product-info {
@@ -62,4 +53,24 @@
     align-items: flex-end;
 
     padding: 0px 10px 0px 0px;
+}
+
+.inventory-price {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.category-select {
+    width: 398px;
+    height: 32px;
+
+    background: #FFFFFF;
+    border: 2px solid rgba(37, 103, 255, 1);
+    border-radius: 12px;
+}
+
+.product-category {
+    margin: 40px 0 40px 0;
 }
