@@ -9,7 +9,7 @@
 
 .su-container {
     width: 963px;
-    height: 588px;
+    height: 80%;
 
     background: #FFFFFF;
     border-radius: 12px;
@@ -40,4 +40,10 @@
 
 .have-account {
     flex-direction: row;
+}
+
+.error-text {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
 }
