@@ -6,7 +6,7 @@ function SearchPage() {
     <>
       <div className="w-full ">
         <div className="w-full mt-6 pl-8">
-          <div><h1>Producto buscado</h1></div>
+          <div><h2>Producto buscado</h2></div>
           <div><p>34 resultados</p></div>
         </div>
         <div className="w-full flex justify-center">
@@ -15,7 +15,6 @@ function SearchPage() {
             <SearchCard />
             <SearchCard />
             <SearchCard />
-
           </div>
         </div>
       </div>
