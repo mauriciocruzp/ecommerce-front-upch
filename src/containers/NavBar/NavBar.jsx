@@ -1,69 +1,34 @@
-import { Link } from 'react-router-dom';
-import Button from '../../components/Button/Button';
-import InputSearch from '../../components/Input/InputSearch';
-import useAuth from '../../hooks/useAuth';
+import SearchSvg from '../../assets/svg/search.svg';
+import CartSvg from '../../assets/svg/cart.svg';
+import AvatarSvg from '../../assets/svg/avatar.svg';
 import './NavBar.css';
+import { Link } from 'react-router-dom';
 
 function NavBar() {
-  const { authState } = useAuth();
-
-  const cartButton = (
-    <Button
-      text={
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          width='16'
-          height='16'
-          fill='white'
-          className='bi bi-cart'
-          viewBox='0 0 16 16'
-        >
-          <path d='M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z' />
-        </svg>
-      }
-      width='47px'
-      classNameButton='primary-button'
-      onClick={null}
-    />
-  );
-
-  const adminButton = (
-    <Link to='/admin'>
-      <Button text='Admin' width='78px' classNameButton='primary-button' />
-    </Link>
-  );
-
   return (
-    <nav className='nav-bar'>
-      <div className='name-b'>
-        <Link to='/'>
-          <h1>Ecommerce UPCH</h1>
-        </Link>
+    <div className='flex w-full h-12 px-8 justify-between bg-white items-center'>
+      <Link to='/'>
+        <h3 className='text-lg'>E-commerce</h3>
+      </Link>
+      <div className='w-1/2 h-2/3 flex items-center'>
+        <img src={SearchSvg} className='absolute pl-3 to-gray-500' />
+        <input
+          type='text'
+          className='w-full h-full bg-slate-100 rounded-full px-10 text-sm'
+        />
       </div>
-      <div className='form-container'>
-        <form>
-          <InputSearch id='search' />
-          <button className='search-btn' onSubmit={null}>
-            {
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                width='16'
-                height='16'
-                fill='rgba(37, 103, 255, 1)'
-                className='bi bi-search'
-                viewBox='0 0 16 16'
-              >
-                <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z' />
-              </svg>
-            }
-          </button>
-        </form>
+      <div className='flex justify-center items-center gap-20'>
+        <a
+          href='#'
+          className='w-8 h-8 px-2.5 py-1.5 bg-principal-purple rounded-xl flex justify-center items-center'
+        >
+          <img src={CartSvg} className='w-3.5 h-3.5' />
+        </a>
+        <div className='w-8 h-8'>
+          <img src={AvatarSvg} className='w-full h-full' draggable={false} />
+        </div>
       </div>
-      <div className='cart-btn-div'>
-        {authState.isAuthenticated ? adminButton : cartButton}
-        <div className='profile-img'></div>
-      </div>
-    </nav>
+    </div>
   );
 }
 
