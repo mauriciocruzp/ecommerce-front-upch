@@ -1,13 +1,11 @@
-import './NavBar.css';
-import InputSearch from '../../components/Input/InputSearch';
-import Button from '../../components/Button/Button';
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import RoleContext from '../../context/RoleContext';
-import AuthContext from '../../context/AuthContext/AuthContext';
+import Button from '../../components/Button/Button';
+import InputSearch from '../../components/Input/InputSearch';
+import useAuth from '../../hooks/useAuth';
+import './NavBar.css';
 
 function NavBar() {
-  const { isAthenticathed } = useContext(AuthContext);
+  const { authState } = useAuth();
 
   const cartButton = (
     <Button
@@ -62,7 +60,7 @@ function NavBar() {
         </form>
       </div>
       <div className='cart-btn-div'>
-        {isAthenticathed ? adminButton : cartButton}
+        {authState.isAuthenticated ? adminButton : cartButton}
         <div className='profile-img'></div>
       </div>
     </nav>
