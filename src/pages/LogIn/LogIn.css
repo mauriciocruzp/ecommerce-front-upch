@@ -4,7 +4,17 @@
 
     display: flex;
     justify-content: center;
-    align-items: center;
+}
+
+.bg-purple{
+    background: linear-gradient(203.16deg, #A887EB 0%, rgba(140, 96, 228, 0.9) 83.69%);
+}
+
+.img{
+    width: 597px;
+    height: 450px;
+
+    mix-blend-mode: inherit;
 }
 
 .w-container {
