@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getProductById } from '../../api/services/product';
 import Button from '../../components/Button/Button';
 import Spinner from '../../components/Spinner/Spinner';
@@ -8,13 +8,19 @@ import NavBar from '../../containers/NavBar/NavBar';
 function ProductDetail() {
   const params = useParams();
 
+  const navigator = useNavigate();
+
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
       const response = await getProductById(params.id);
-      console.log(response);
-      setProduct(response.data.data);
+
+      if (response.status === 200) {
+        setProduct(response.data.data);
+      } else {
+        navigator('/');
+      }
     }
     fetchData();
   }, []);
