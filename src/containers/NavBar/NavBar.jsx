@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 function NavBar() {
   return (
-    <div className='flex w-full h-12 px-8 justify-between bg-white items-center'>
+    <div className='flex w-full h-12 px-8 justify-between bg-white items-center shadow-sm'>
       <Link to='/'>
         <h3 className='text-lg'>E-commerce</h3>
       </Link>
