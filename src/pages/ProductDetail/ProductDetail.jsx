@@ -3,13 +3,11 @@ import { useParams } from 'react-router-dom';
 import { getProductById } from '../../api/services/product';
 import Button from '../../components/Button/Button';
 import NavBar from '../../containers/NavBar/NavBar';
-import './ProductDetail.css';
 
-function ProductDetail(props) {
-
+function ProductDetail() {
   const params = useParams();
 
-  const [ product, setProduct ] = useState({});
+  const [product, setProduct] = useState({});
 
   useEffect(() => {
     async function fetchData() {
@@ -21,32 +19,37 @@ function ProductDetail(props) {
   }, []);
 
   return (
-    <>
+    <div className='h-screen' >
       <NavBar />
-      <div className="product-detail">
-        <div className="pd-container">
-          <div className="img-product-container">
-            <div className="img-product-div">
-              <img className='img-product' src={product.imageUrl} alt={product.title} />
-            </div>
+      <div className='w-full h-5/6 flex justify-center items-center'>
+        <div className='bg-white w-10/12 h-5/6 shadow-md flex gap-10 p-16'>
+          <div className='w-1/2'>
+            <img src={product.imageUrl} />
           </div>
-          <div className="info-product-container">
-            <div className="name-product-info">
-              <h1>{product.title}</h1>
+          <div className='w-1/2 flex flex-col gap-20 justify-center'>
+            <div className='flex gap-8'>
+              <h1 className='text-2xl font-semibold'>{product.title}</h1>
+              <p className='text-lg font-medium'>${product.price}</p>
             </div>
-            <div className='details'>
+            <div>
               <p>{product.description}</p>
             </div>
-            <div className="price-details">
-              <h1>${product.price}</h1>
+            <div className='flex justify-between'>
+              <input
+                type='number'
+                name='quantity'
+                defaultValue={1}
+                min={1}
+                className='bg-input-purple w-20 rounded-md px-4 py-1'
+              />
+              <button className='bg-principal-purple text-white rounded-md px-4 py-2 text-sm'>
+                Agregar al carrito
+              </button>
             </div>
-            <input min={1} defaultValue={1} type='number' id='number-add' name='number-add'/>
-            <Button text='Agregar al carrito' width='238px' classNameButton='primary-button' />
           </div>
         </div>
-
       </div>
-    </>
+    </div>
   );
 }
 
