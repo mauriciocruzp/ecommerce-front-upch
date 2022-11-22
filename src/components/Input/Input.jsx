@@ -1,10 +1,7 @@
-import './Input.css';
-
-function Input(props) {
+function Input({type, name, placeholder, id}) {
   return (
     <div className='input-container'>
-      <label className='label' htmlFor={props.id}>{props.text}</label>
-        <input className='input' type={props.type} name={props.id} value={props.value} onChange={props.handleChange} onBlur={props.handleBlur} placeholder={props.placeholder} />
+      <input type={type} name={name} id={id} placeholder={placeholder} className='bg-gray-50 rounded-md px-3 py-1 placeholder-gray-400 focus:outline-none focus:outline-principal-purple' />
     </div>
   );
 }

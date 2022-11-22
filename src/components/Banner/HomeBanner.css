@@ -1,0 +1,20 @@
+.banner-background{
+    background: linear-gradient(85.87deg, #5822C7 -10.29%, #8C60E4 50.53%, #A887EB 120.92%);
+    height: 344px;
+}
+
+.banner-container{
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-image{
+    width: 406px;
+    height: 306px;
+    left: 920px;
+    top: 19px;
+}

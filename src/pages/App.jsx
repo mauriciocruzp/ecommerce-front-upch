@@ -21,28 +21,25 @@ function App() {
             <Route path="/login" element={<LogIn />} />
             <Route path="/addressform" element={<AddressForm/>}/>
             <Route path="/listaddress" element={<ListAddress/>}></Route>
+            <Route path='/product/:id' element={<ProductDetail />} />
             <Route
-              path="/product/:id"
-              element={
-                <ProductDetail />
-              }
-            />
-            <Route
-              path="/new-product"
+              path='admin/new-product'
               element={
                 <RequireAuth>
-                  <NewProduct />
+                  <ProductForm />
                 </RequireAuth>
               }
             />
             <Route
-              path="/admin"
+              path='/admin'
               element={
                 <RequireAuth>
                   <Admin />
                 </RequireAuth>
               }
             />
+
+            <Route path='/*' element={<NotFound />} />
           </Routes>
         </AuthProvider>
       </BrowserRouter>

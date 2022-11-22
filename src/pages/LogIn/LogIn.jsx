@@ -1,15 +1,15 @@
-import { Formik } from 'formik';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import * as Yup from 'yup';
-import { signIn } from '../../api/services/auth';
-import Button from '../../components/Button/Button';
-import Input from '../../components/Input/Input';
-import useAuth from '../../hooks/useAuth';
-import './LogIn.css';
+import { Formik } from "formik";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import * as Yup from "yup";
+import { signIn } from "../../api/services/auth";
+import LoginSvg from "../../assets/svg/login.svg";
+import Button from "../../components/Button/Button";
+import Input from "../../components/Input/Input";
+import useAuth from "../../hooks/useAuth";
+import "./LogIn.css";
 
 function LogIn() {
-
   const { setAccessToken, authState } = useAuth();
 
   useEffect(() => {
@@ -19,15 +19,15 @@ function LogIn() {
   const navigate = useNavigate();
 
   const initialValues = {
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   };
 
   const validationSchema = Yup.object({
     email: Yup.string()
-      .email('Correo electronico invalido')
-      .required('Campo requerido'),
-    password: Yup.string().required('Campo requerido'),
+      .email("Correo electronico invalido")
+      .required("Campo requerido"),
+    password: Yup.string().required("Campo requerido"),
   });
 
   async function handleSubmit(values) {
@@ -35,12 +35,12 @@ function LogIn() {
 
     if (response.status === 200) {
       setAccessToken(response.data.data.accessToken);
-      alert('Inicio de sesion exitoso');
-      navigate('/');
+      alert("Inicio de sesion exitoso");
+      navigate("/");
       return;
     }
 
-    alert('Usuario o contraseña incorrectos');
+    alert("Usuario o contraseña incorrectos");
   }
 
   return (
@@ -48,73 +48,61 @@ function LogIn() {
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
-    >
-      {({
-        values,
-        errors,
-        touched,
-        handleChange,
-        handleBlur,
-        handleSubmit,
-      }) => (
-        <div className='log-in'>
-          <div className='w-container'>
-            <div className='head'>
-              <h1>Ecommerce UPCH</h1>
-              <h2>Inicia sesión</h2>
+      >
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit
+        }) => (
+        <div>
+          <div className="h-screen flex justify-between items-center">
+            <div className="w-2/3 h-full flex flex-col grid justify-items-center items-center">
+              <div className="w-2/3">
+                <h1 className="pb-2 text-5xl">Inicia Sesión</h1>
+                <p className="pb-5 text-xl text-gray-400">
+                  Disfruta de las promociones que tenemos especialmente para ti!
+                </p>
+
+                <form onSubmit={handleSubmit}>
+                  <div className="pb-5">
+                    <Input
+                      type="email"
+                      name="email"
+                      id="email"
+                      placeholder={"Correo electronico"}
+                      className="w-full text-xl" />
+                  </div>
+                  <div className="pb-5">
+                    <Input
+                      type="password"
+                      name="password"
+                      id="password"
+                      placeholder={"Contraseña"}
+                      className="w-full text-xl" />
+                  </div>
+                  <div
+                    className="btn-container"
+                    style={{ marginTop: "30px", marginBottom: "20px" }}
+                    type="submit"
+                  >
+                    <Button
+                      children={"Iniciar Sesión"}
+                      width="w-full text-xl"
+                      type="submit"
+                    />
+                  </div>
+                </form>
+              </div>
             </div>
-            <div className='form-login-container'>
-              <form onSubmit={handleSubmit}>
-                <div>
-                  <Input
-                    id='email'
-                    text='Correo electronico'
-                    type='email'
-                    value={values.email}
-                    handleChange={handleChange}
-                    handleBlur={handleBlur}
-                  />
-                  {touched.email && errors.email && (
-                    <p className='error-text'>{errors.email}</p>
-                  )}
-                </div>
-                <div>
-                  <Input
-                    id='password'
-                    text='Contraseña'
-                    type='password'
-                    value={values.password}
-                    handleChange={handleChange}
-                    handleBlur={handleBlur}
-                  />
-                  {touched.password && errors.password && (
-                    <p className='error-text'>{errors.password}</p>
-                  )}
-                </div>
-                <div
-                  className='btn-container'
-                  style={{ marginTop: '30px', marginBottom: '20px' }}
-                  type='submit'
-                >
-                  <Button
-                    classNameButton='primary-button'
-                    text='Iniciar sesión'
-                    width='278px'
-                    type='submit'
-                  />
-                </div>
-              </form>
-            </div>
-            <div className='forgot'>
-              <a href='#'>Olvidé mi contraseña</a>
-            </div>
-            <div className='have'>
-              <p style={{ marginRight: '5px' }}>¿No tienes cuenta?</p>
-              <a href='#'>Crear una cuenta</a>
+            <div className="bg-purple w-2/3 h-full flex flex-col justify-center items-center">
+              <img className="img" src={LoginSvg} alt="homeimg" />
             </div>
           </div>
         </div>
-      )}
+        )}
     </Formik>
   );
 }
