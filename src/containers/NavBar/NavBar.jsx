@@ -1,7 +1,6 @@
 import SearchSvg from '../../assets/svg/search.svg';
 import CartSvg from '../../assets/svg/cart.svg';
 import AvatarSvg from '../../assets/svg/avatar.svg';
-import './NavBar.css';
 import { Link } from 'react-router-dom';
 
 function NavBar() {
