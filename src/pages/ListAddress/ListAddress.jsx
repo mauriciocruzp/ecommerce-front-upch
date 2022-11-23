@@ -1,6 +1,6 @@
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
-import City from '../../Images/City buildings_Monochromatic.svg';
+import City from '../../assets/svg/City buildings_Monochromatic.svg';
 function ListAddress() {
     return ( 
         <div className="address-form w-full h-96 flex flex flex-col  justify-center items-center" >

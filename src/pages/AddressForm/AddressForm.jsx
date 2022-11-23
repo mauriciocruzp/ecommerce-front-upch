@@ -1,6 +1,6 @@
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
-import * as yup from 'yup';
+import * as Yup from 'yup';
 import Checklist from "../../assets/svg/City buildings_Monochromatic.svg";
 import './Addressform.css'
 import { useNavigate } from "react-router-dom";
@@ -18,15 +18,15 @@ function AddressForm() {
         country: ""
     }
 
-    const validationSchema = yup.object().shape({
-        street: yup.string().required("El nombre de la calle es requerido"),
-        state: yup.string().required("El nombre de tu estado es requerido"),
-        zipcode:yup
+    const validationSchema = Yup.object().shape({
+        street: Yup.string().required("El nombre de la calle es requerido"),
+        state: Yup.string().required("El nombre de tu estado es requerido"),
+        zipcode:Yup
         .string()
         .min(5,"El codigo postal deben ser minimo 5 digitos")
         .max(5, "El codigo postal no puede ser mayor a 5 digitos")
         .required("El codigo postal es requerido"),
-        country: yup.string().required("El pais es requerido")
+        country: Yup.string().required("El pais es requerido")
     })
 
     async function handleSubmit(values){
