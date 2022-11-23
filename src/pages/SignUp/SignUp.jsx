@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import { Formik } from 'formik';
 import { createUser } from '../../api/services/user';
 import { useNavigate } from 'react-router-dom';
-import {Register} from '../../assets/svg/register.svg'
+import Register from '../../assets/svg/register.svg'
 
 function SignUp() {
 
@@ -156,7 +156,7 @@ function SignUp() {
                     )}
                     </div>
                     <div className="btn-container" style={{marginTop: "30px", marginButtom: "20px"}} type="submit">
-                      <Button className="primary-button" text="Agregar direccion" width="278px" type="submit"/>
+                      <Button className="primary-button" text="Agregar direccion" width="278px" type="submit">Registrarse</Button>
                     </div>
                     <div>
                       <p style={{ marginRight: '5px' }}>¿Ya tienes cuenta? </p>
