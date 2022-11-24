@@ -17,6 +17,7 @@ import { useState } from 'react';
 import Spinner from '../../components/Spinner/Spinner';
 import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
 import { uploadFile } from '../../api/services/file';
+import TextError from '../../components/TextError/TextError';
 
 const ProductForm = () => {
   const { authState } = useAuth();
@@ -139,7 +140,7 @@ const ProductForm = () => {
                         name='title'
                       />
                       {errors.title && touched.title && (
-                        <p className='text-red-500'>{errors.title}</p>
+                        <TextError>{errors.title}</TextError>
                       )}
                     </div>
                     <div className='flex flex-col gap-2'>
@@ -152,7 +153,7 @@ const ProductForm = () => {
                         placeholder='Microfono de alta calidad...'
                       ></Textarea>
                       {errors.description && touched.description && (
-                        <p className='text-red-500'>{errors.description}</p>
+                        <TextError>{errors.description}</TextError>
                       )}
                     </div>
                     <div className='flex flex-col gap-2'>
@@ -166,7 +167,7 @@ const ProductForm = () => {
                         placeholder='$1,000'
                       />
                       {errors.price && touched.price && (
-                        <p className='text-red-500'>{errors.price}</p>
+                        <TextError>{errors.price}</TextError>
                       )}
                     </div>
                     <div className='flex flex-col gap-2'>
@@ -180,7 +181,7 @@ const ProductForm = () => {
                         placeholder='3'
                       />
                       {errors.stock && touched.stock && (
-                        <p className='text-red-500'>{errors.stock}</p>
+                        <TextError>{errors.stock}</TextError>
                       )}
                     </div>
                     <div className='flex flex-col gap-2'>
@@ -200,7 +201,7 @@ const ProductForm = () => {
                         <Spinner />
                       )}
                       {errors.categoryIds && touched.categoryIds && (
-                        <p className='text-red-500'>{errors.categoryIds}</p>
+                        <TextError>{errors.categoryIds}</TextError>
                       )}
                     </div>
                     <div className='flex flex-col gap-2'>
@@ -244,8 +245,8 @@ const ProductForm = () => {
                           />
                         </label>
                       </div>
-                      {errors.image && (
-                        <p className='text-red-500'>{errors.image}</p>
+                      {errors.image && touched.image && (
+                        <TextError>{errors.image}</TextError>
                       )}
                     </div>
                   </div>
