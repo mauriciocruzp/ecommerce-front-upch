@@ -61,7 +61,7 @@ function AddressForm() {
           <div>
             {console.log(errors)}
             <div className="h-screen flex justify-between items-center">
-              <div className="w-2/3 h-full flex flex-col grid justify-items-center items-center">
+              <div className="w-2/3 h-full grid justify-items-center items-center">
                 <div className="w-2/3">
                   <h1 className="pb-2 text-5x-l">Agrega una direccion</h1>
                   <form onSubmit={handleSubmit}>
