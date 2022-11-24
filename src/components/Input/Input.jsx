@@ -1,9 +1,23 @@
-function Input({type, name, text, placeholder, id}) {
+function Input({
+  type,
+  placeholder,
+  id,
+  name,
+  value,
+  handleChange,
+  handleBlur,
+}) {
   return (
-    <div className='flex flex-col'>
-      <label className='mt-3' htmlFor={id}>{text}</label>
-      <input type={type} name={name} id={id} placeholder={placeholder} className='bg-purple-white rounded-md px-3 py-1 placeholder-intermidiate focus:outline-none focus:outline-principal-purple but' />
-    </div>
+    <input
+      value={value}
+      type={type}
+      id={id}
+      name={name}
+      placeholder={placeholder}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      className='bg-purple-white rounded-md px-3 py-1 placeholder-intermidiate focus:outline-none focus:outline-principal-purple' 
+    />
   );
 }
 
