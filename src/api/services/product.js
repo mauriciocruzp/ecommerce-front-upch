@@ -1,13 +1,32 @@
 import { axiosInstance } from '../axios';
 
-export async function createProduct(formData) {
+export async function createProduct(
+  title,
+  description,
+  price,
+  stock,
+  imageUrl,
+  categoryIds
+) {
   try {
-    const response = await axiosInstance.post('/product', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+    const response = await axiosInstance.post(
+      '/product',
+      {
+        title,
+        description,
+        price,
+        stock,
+        imageUrl,
+        categoryIds,
+        productStatusId: 1,
       },
-    });
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+      }
+    );
     return response;
   } catch (error) {
     console.log(error);
