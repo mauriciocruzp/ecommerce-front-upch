@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { getListProduct } from '../../api/services/product';
 import Card from '../../containers/Card/Card.jsx';
 import Spinner from '../../components/Spinner/Spinner.jsx';
+import Footer from '../../components/Footer/Footer.jsx';
 
 function Home() {
   const [products, setProducts] = useState(null);
@@ -36,6 +37,7 @@ function Home() {
           </div>
         )}
       </div>
+      <Footer />
     </>
   );
 }
