@@ -10,7 +10,7 @@ import AddressForm from './AddressForm/AddressForm';
 import ListAddress from './ListAddress/ListAddress';
 import NotFound from './NotFound/NotFound';
 import AuthRoute from '../components/AuthRoute/AuthRoute';
-import Checkout from "./Checkout/Checkout";
+import Checkout from './Checkout/Checkout';
 
 function App() {
   return (
@@ -28,7 +28,7 @@ function App() {
             <Route path='/addressform' element={<AddressForm />} />
             <Route path='/listaddress' element={<ListAddress />}></Route>
             <Route path='/product/:id' element={<ProductDetail />} />
-            <Route path="checkout" element={<Checkout />} />
+            <Route path='checkout' element={<Checkout />} />
             <Route path='/*' element={<NotFound />} />
           </Routes>
         </AuthProvider>
