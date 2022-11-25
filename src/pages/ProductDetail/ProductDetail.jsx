@@ -49,7 +49,7 @@ function ProductDetail() {
                     name='quantity'
                     defaultValue={1}
                     min={1}
-                    className='bg-gray-50 focus:outline-none focus:outline-principal-purple w-20 rounded-md px-4 py-1'
+                    className='bg-light-white focus:outline-none focus:outline-principal-purple w-20 rounded-md px-4 py-1'
                   />
                   <button className='bg-principal-purple text-white rounded-md px-4 py-2 text-sm'>
                     Agregar al carrito
