@@ -48,3 +48,9 @@ export async function getProductById(id) {
     return error;
   }
 }
+
+export async function searchByKeyword(keyword) {
+  const response = axiosInstance.get(`/product/?keyword=${keyword}`);
+  
+  return response;
+}
