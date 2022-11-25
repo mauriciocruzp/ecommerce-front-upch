@@ -1,21 +1,33 @@
 import SearchSvg from '../../assets/svg/search.svg';
 import CartSvg from '../../assets/svg/cart.svg';
 import AvatarSvg from '../../assets/svg/avatar.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function NavBar() {
+
+  const navigate = useNavigate();
+
+  function handleSubmit(e) {
+    const keyword = document.getElementById('searchInput').value;
+    console.log(keyword);
+    navigate(`/searchpage/?keyword=${keyword}`);
+  }
+
   return (
     <div className='flex w-full h-12 px-8 justify-between bg-white items-center shadow-sm'>
       <Link to='/'>
         <h3 className='text-lg'>E-commerce</h3>
       </Link>
-      <div className='w-1/2 h-2/3 flex items-center'>
-        <img src={SearchSvg} className='absolute pl-3 to-gray-500' />
+      <form className='w-1/2 h-2/3 flex items-center' onSubmit={handleSubmit}>
+        <button className='absolute pl-3' type='submit'>
+          <img src={SearchSvg} className='to-gray-500' />
+        </button>
         <input
           type='text'
           className='w-full h-full bg-slate-100 rounded-full px-10 text-sm'
+          id='searchInput'
         />
-      </div>
+      </form>
       <div className='flex justify-center items-center gap-20'>
         <a
           href='#'
