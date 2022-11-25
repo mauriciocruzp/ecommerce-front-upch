@@ -10,6 +10,7 @@ import SignUp from "./SignUp/SignUp";
 import AddressForm from "./AddressForm/AddressForm";
 import ListAddress from "./ListAddress/ListAddress";
 import NotFound from "./NotFound/NotFound";
+import Checkout from "./Checkout/Checkout";
 
 function App() {
   return (
@@ -39,7 +40,7 @@ function App() {
                 </RequireAuth>
               }
             />
-
+            <Route path="checkout" element={<Checkout />} />
             <Route path='/*' element={<NotFound />} />
           </Routes>
         </AuthProvider>
