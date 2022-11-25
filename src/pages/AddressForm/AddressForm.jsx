@@ -32,7 +32,7 @@ function AddressForm() {
 
   async function handleSubmit(values) {
     const response = await createAddress(values.street, values.zipcode, values.state, values.country)
-
+    console.log(values)
     if (response.status == 201) {
       alert("Direccion agregada");
       navigate("/address");
@@ -59,38 +59,64 @@ function AddressForm() {
           touched
         }) => (
           <div>
+            {console.log(errors)}
             <div className="h-screen flex justify-between items-center">
               <div className="w-2/3 h-full grid justify-items-center items-center">
                 <div className="w-2/3">
                   <h1 className="pb-2 text-5x-l">Agrega una direccion</h1>
                   <form onSubmit={handleSubmit}>
-                    <div>
+                    <div className="my-5">
                       <Input
                         id="street"
+                        name="street"
                         text="Calle:"
                         type="text"
-                        placeholder="Ej: Avenida Rio Tulija" />
+                        placeholder="Ej: Avenida Rio Tulija" 
+                        value={values.street}
+                        handleChange={handleChange}
+                        handleBlur={handleBlur}/>
+                        {touched.street && errors.street && (
+                          <p className="error-text">{errors.street}</p>
+                        )}
                     </div>
-                    <div>
+                    <div className="my-5">
                       <Input
                         id="zipcode"
                         text="Codigo Postal:"
                         type="number"
-                        placeholder="Ej: 29047" />
+                        placeholder="Ej: 29047"
+                        value={values.zipcode}
+                        handleChange={handleChange}
+                        handleBlur={handleBlur}/>
+                        {touched.zipcode && errors.zipcode && (
+                          <p className="error-text">{errors.zipcode}</p>
+                        )}
                     </div>
-                    <div>
+                    <div className="my-5">
                       <Input
                         id="state"
                         text="Estado:"
                         type="text"
-                        placeholder="Ej: Chiapas" />
+                        placeholder="Ej: Chiapas"
+                        value={values.state}
+                        handleChange={handleChange}
+                        handleBlur={handleBlur}/>
+                        {touched.state && errors.state &&(
+                          <p className="error-text">{errors.state}</p>
+                        )}
                     </div>
-                    <div>
+                    <div className="my-5">
                       <Input
                         id="country"
                         text="Pais:"
                         type="text"
-                        placeholder="Ej: Mexico" />
+                        placeholder="Ej: Mexico" 
+                        value={values.country}
+                        handleChange={handleChange}
+                        handleBlur={handleBlur}/>
+                        {touched.country && errors.country && (
+                          <p className="error-text">{errors.country}</p>
+                        )}
                     </div>
                     <div className="btn-container" style={{ marginTop: "30px", marginButtom: "20px" }} type="submit">
                       <Button className="primary-button" text="Agregar direccion" width="w-full" type="submit">Agregar dirección</Button>
@@ -100,7 +126,7 @@ function AddressForm() {
               </div>
 
               <div className="bg-purple w-2/3 h-full flex flex-col justify-center items-center ">
-                <img src={Checklist} alt="homeimg" className="img" />
+                <img src={Checklist} alt="homeimg" className="img"/>
               </div>
             </div>
           </div>
