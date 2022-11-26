@@ -10,6 +10,7 @@ import SignUp from "./SignUp/SignUp";
 import AddressForm from "./AddressForm/AddressForm";
 import ListAddress from "./ListAddress/ListAddress";
 import NotFound from "./NotFound/NotFound";
+import Cart from "./Cart/Cart";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/addressform" element={<AddressForm />} />
             <Route path="/listaddress" element={<ListAddress />}></Route>
             <Route path='/product/:id' element={<ProductDetail />} />
+            <Route path="/cart" element={<Cart />}/>  
             <Route
               path='admin/new-product'
               element={
