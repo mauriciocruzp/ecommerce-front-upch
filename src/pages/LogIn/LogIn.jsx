@@ -59,9 +59,9 @@ function LogIn() {
         }) => (
         <div>
           <div className="h-screen flex justify-between items-center">
-            <div className="w-2/3 h-full flex flex-col grid justify-items-center items-center">
+            <div className="w-2/3 h-full grid justify-items-center items-center">
               <div className="w-2/3">
-                <h1 className="pb-2 text-5xl">Inicia Sesión</h1>
+                <h1 className="pb-2 text-4xl">Inicia Sesión</h1>
                 <p className="pb-5 text-xl text-gray-400">
                   Disfruta de las promociones que tenemos especialmente para ti!
                 </p>
@@ -89,7 +89,7 @@ function LogIn() {
                     type="submit"
                   >
                     <Button
-                      children={"Iniciar Sesión"}
+                      children={"Enviar"}
                       width="w-full text-xl"
                       type="submit"
                     />
