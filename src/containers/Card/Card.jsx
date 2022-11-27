@@ -20,7 +20,7 @@ function Card({ product }) {
           <img src={product.imageUrl} className='w-full' />
         </div>
       </Link>
-      <div className='flex flex-col w-full bg-white px-6 py-5 gap-10'>
+      <div className='flex flex-col w-full h-full bg-white px-6 py-5 gap-10'>
         <Link to={`/product/${product.id}`}>
           <p className='font-normal text-lg'>{product.title}</p>
         </Link>

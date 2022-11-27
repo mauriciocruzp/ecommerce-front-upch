@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { Formik } from 'formik';
 import { createUser } from '../../api/services/user';
 import { useNavigate } from 'react-router-dom';
+import Register from '../../assets/svg/register.svg'
 
 function SignUp() {
 
@@ -66,24 +67,17 @@ function SignUp() {
         errors,
         touched,
       }) => (
-        <div className='sign-up'>
-          <div className='su-container'>
-            <div className='su-head'>
-              <h1>Bienvenido a Ecommerce UPCH</h1>
-              <h2>Crea tu cuenta</h2>
-            </div>
-            <div className='form-signup-container'>
-              <form onSubmit={handleSubmit}
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '20px',
-                }}
-              >
-                <div>
-                  <Input
+        <div>
+          <div className='h-screen flex justify-between items-center'>
+          <div className='w-2/3 h-full grid justify-items-center items-center'>
+            <div className='w-2/3'>
+                <h1 className='pb-2 text-5x.l'>Crea tu cuenta</h1>
+                <p className='pb-2 text-4x-l'> Crea hoy tu cuenta y empieza a disfrutar de nuestros beneficios</p>
+                <form onSubmit={hadleSubmit}>
+                    <div className='mt-6'>
+                    <Input
                     id='firstName'
-                    text='Nombre'
+                    placeholder='Nombre'
                     type='text'
                     value={values.firstName}
                     handleChange={handleChange}
@@ -92,11 +86,11 @@ function SignUp() {
                   {touched.firstName && errors.firstName && (
                     <p className='error-text'>{errors.firstName}</p>
                   )}
-                </div>
-                <div>
-                  <Input
+                    </div>
+                    <div className='mt-6'>
+                    <Input
                     id='lastName'
-                    text='Apellido'
+                    placeholder='Apellido'
                     type='text'
                     value={values.lastName}
                     handleChange={handleChange}
@@ -105,11 +99,11 @@ function SignUp() {
                   {touched.lastName && errors.lastName && (
                     <p className='error-text'>{errors.lastName}</p>
                   )}
-                </div>
-                <div>
-                  <Input
+                    </div>
+                    <div className='mt-6'>
+                    <Input
                     id='dateOfBirth'
-                    text='Fecha de nacimiento'
+                    placeholder='Fecha de nacimiento'
                     type='date'
                     value={values.dateOfBirth}
                     handleChange={handleChange}
@@ -118,37 +112,37 @@ function SignUp() {
                   {touched.dateOfBirth && errors.dateOfBirth && (
                     <p className='error-text'>{errors.dateOfBirth}</p>
                   )}
-                </div>
-                <div>
-                  <Input
-                    id='email'
-                    text='Correo Electronico'
-                    type='email'
-                    value={values.email}
-                    handleChange={handleChange}
-                    handleBlur={handleBlur}
-                  ></Input>
-                  {touched.email && errors.email && (
-                    <p className='error-text'>{errors.email}</p>
-                  )}
-                </div>
-                <div>
-                  <Input
-                    id='password'
-                    text='Contraseña'
-                    type='password'
-                    value={values.password}
-                    handleChange={handleChange}
-                    handleBlur={handleBlur}
-                  ></Input>
-                  {touched.password && errors.password && (
+                    </div>
+                    <div className='mt-6'>
+                    <Input
+                      id='email'
+                      placeholder='Correo Electronico'
+                      type='email'
+                      value={values.email}
+                      handleChange={handleChange}
+                      handleBlur={handleBlur}
+                    ></Input>
+                      {touched.email && errors.email && (
+                      <p className='error-text'>{errors.email}</p>
+                      )}
+                    </div>
+                    <div className='mt-6'>
+                    <Input
+                      id='password'
+                      placeholder='Contraseña'
+                      type='password'
+                      value={values.password}
+                      handleChange={handleChange}
+                      handleBlur={handleBlur}
+                    ></Input>
+                    {touched.password && errors.password && (
                     <p className='error-text'>{errors.password}</p>
-                  )}
-                </div>
-                <div>
-                  <Input
+                    )}
+                    </div>
+                    <div className='mt-6'>
+                    <Input
                     id='passwordConfirmation'
-                    text='Confirmar contraseña'
+                    placeholder='Confirmar contraseña'
                     type='password'
                     value={values.passwordConfirmation}
                     handleChange={handleChange}
@@ -160,25 +154,20 @@ function SignUp() {
                         {errors.passwordConfirmation}
                       </p>
                     )}
-                </div>
-                <div
-                  className='btn-container'
-                  style={{ marginTop: '30px', marginBottom: '20px' }}
-                >
-                  <Button
-                    classNameButton='primary-button'
-                    text='Crear cuenta'
-                    onClick=''
-                    width='278px'
-                    type='submit'
-                  ></Button>
-                </div>
-              </form>
+                    </div>
+                    <div className="btn-container" style={{marginTop: "30px", marginButtom: "20px"}} type="submit">
+                      <Button className="primary-button" text="Agregar direccion" width="278px" type="submit">Registrarse</Button>
+                    </div>
+                    <div>
+                      <p style={{ marginRight: '5px' }}>¿Ya tienes cuenta? </p>
+                      <a href='#'>Inicia sesión</a>
+                    </div>
+                </form>
             </div>
-            <div className='have-account'>
-              <p style={{ marginRight: '5px' }}>¿Ya tienes cuenta? </p>
-              <a href='#'>Inicia sesión</a>
-            </div>
+          </div>
+              <div className="bg-purple w-2/3 h-full flex flex-col justify-center items-center">
+                <img src={Register} alt="homeimg" className="img" />
+              </div>
           </div>
         </div>
       )}

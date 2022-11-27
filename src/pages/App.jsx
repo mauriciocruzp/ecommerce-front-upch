@@ -1,16 +1,19 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import AuthProvider from "../context/AuthContext/AuthProvider";
-import RequireAuth from "../utils/RequireAuth";
-import Admin from "./Admin/Admin";
-import Home from "./Home/Home";
-import LogIn from "./LogIn/LogIn";
-import ProductForm from "./ProductForm/ProductForm";
-import ProductDetail from "./ProductDetail/ProductDetail";
-import SignUp from "./SignUp/SignUp";
-import AddressForm from "./AddressForm/AddressForm";
-import ListAddress from "./ListAddress/ListAddress";
-import NotFound from "./NotFound/NotFound";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AuthProvider from '../context/AuthContext/AuthProvider';
+import Admin from './Admin/Admin';
+import Home from './Home/Home';
+import LogIn from './LogIn/LogIn';
+import ProductForm from './ProductForm/ProductForm';
+import ProductDetail from './ProductDetail/ProductDetail';
+import SignUp from './SignUp/SignUp';
+import AddressForm from './AddressForm/AddressForm';
+import ListAddress from './ListAddress/ListAddress';
+import NotFound from './NotFound/NotFound';
+import AuthRoute from '../components/AuthRoute/AuthRoute';
+import Checkout from './Checkout/Checkout';
+import SearchPage from './SearchPage/SearchPage';
 import Cart from "./Cart/Cart";
+
 
 function App() {
   return (
@@ -18,30 +21,19 @@ function App() {
       <BrowserRouter>
         <AuthProvider>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/register" element={<SignUp />} />
-            <Route path="/login" element={<LogIn />} />
-            <Route path="/addressform" element={<AddressForm />} />
-            <Route path="/listaddress" element={<ListAddress />}></Route>
+            <Route element={<AuthRoute />}>
+              <Route path='admin/new-product' element={<ProductForm />} />
+              <Route path='/admin' element={<Admin />} />
+              <Route path='/addressform' element={<AddressForm />} />
+              <Route path="/cart" element={<Cart />}/>  
+              <Route path='/checkout' element={<Checkout />} />
+              <Route path='/listaddress' element={<ListAddress />}></Route>
+            </Route>
+            <Route path='/' element={<Home />} />
+            <Route path='/register' element={<SignUp />} />
+            <Route path='/login' element={<LogIn />} />
             <Route path='/product/:id' element={<ProductDetail />} />
-            <Route path="/cart" element={<Cart />}/>  
-            <Route
-              path='admin/new-product'
-              element={
-                <RequireAuth>
-                  <ProductForm />
-                </RequireAuth>
-              }
-            />
-            <Route
-              path='/admin'
-              element={
-                <RequireAuth>
-                  <Admin />
-                </RequireAuth>
-              }
-            />
-
+            <Route path='/searchpage' element={<SearchPage />} />
             <Route path='/*' element={<NotFound />} />
           </Routes>
         </AuthProvider>

@@ -1,6 +1,6 @@
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
-import * as yup from 'yup';
+import * as Yup from 'yup';
 import Checklist from "../../assets/svg/city_buildings.svg";
 import './Addressform.css'
 import { useNavigate } from "react-router-dom";
@@ -19,20 +19,20 @@ function AddressForm() {
     country: ""
   }
 
-  const validationSchema = yup.object().shape({
-    street: yup.string().required("El nombre de la calle es requerido"),
-    state: yup.string().required("El nombre de tu estado es requerido"),
-    zipcode: yup
-      .string()
-      .min(5, "El codigo postal deben ser minimo 5 digitos")
-      .max(5, "El codigo postal no puede ser mayor a 5 digitos")
-      .required("El codigo postal es requerido"),
-    country: yup.string().required("El pais es requerido")
-  })
+    const validationSchema = Yup.object().shape({
+        street: Yup.string().required("El nombre de la calle es requerido"),
+        state: Yup.string().required("El nombre de tu estado es requerido"),
+        zipcode:Yup
+        .string()
+        .min(5,"El codigo postal deben ser minimo 5 digitos")
+        .max(5, "El codigo postal no puede ser mayor a 5 digitos")
+        .required("El codigo postal es requerido"),
+        country: Yup.string().required("El pais es requerido")
+    })
 
   async function handleSubmit(values) {
     const response = await createAddress(values.street, values.zipcode, values.state, values.country)
-
+    console.log(values)
     if (response.status == 201) {
       alert("Direccion agregada");
       navigate("/address");
@@ -59,38 +59,64 @@ function AddressForm() {
           touched
         }) => (
           <div>
+            {console.log(errors)}
             <div className="h-screen flex justify-between items-center">
-              <div className="w-2/3 h-full flex flex-col grid justify-items-center items-center">
+              <div className="w-2/3 h-full grid justify-items-center items-center">
                 <div className="w-2/3">
                   <h1 className="pb-2 text-5x-l">Agrega una direccion</h1>
                   <form onSubmit={handleSubmit}>
-                    <div>
+                    <div className="my-5">
                       <Input
                         id="street"
+                        name="street"
                         text="Calle:"
                         type="text"
-                        placeholder="Ej: Avenida Rio Tulija" />
+                        placeholder="Ej: Avenida Rio Tulija" 
+                        value={values.street}
+                        handleChange={handleChange}
+                        handleBlur={handleBlur}/>
+                        {touched.street && errors.street && (
+                          <p className="error-text">{errors.street}</p>
+                        )}
                     </div>
-                    <div>
+                    <div className="my-5">
                       <Input
                         id="zipcode"
                         text="Codigo Postal:"
                         type="number"
-                        placeholder="Ej: 29047" />
+                        placeholder="Ej: 29047"
+                        value={values.zipcode}
+                        handleChange={handleChange}
+                        handleBlur={handleBlur}/>
+                        {touched.zipcode && errors.zipcode && (
+                          <p className="error-text">{errors.zipcode}</p>
+                        )}
                     </div>
-                    <div>
+                    <div className="my-5">
                       <Input
                         id="state"
                         text="Estado:"
                         type="text"
-                        placeholder="Ej: Chiapas" />
+                        placeholder="Ej: Chiapas"
+                        value={values.state}
+                        handleChange={handleChange}
+                        handleBlur={handleBlur}/>
+                        {touched.state && errors.state &&(
+                          <p className="error-text">{errors.state}</p>
+                        )}
                     </div>
-                    <div>
+                    <div className="my-5">
                       <Input
                         id="country"
                         text="Pais:"
                         type="text"
-                        placeholder="Ej: Mexico" />
+                        placeholder="Ej: Mexico" 
+                        value={values.country}
+                        handleChange={handleChange}
+                        handleBlur={handleBlur}/>
+                        {touched.country && errors.country && (
+                          <p className="error-text">{errors.country}</p>
+                        )}
                     </div>
                     <div className="btn-container" style={{ marginTop: "30px", marginButtom: "20px" }} type="submit">
                       <Button className="primary-button" text="Agregar direccion" width="w-full" type="submit">Agregar dirección</Button>
@@ -100,7 +126,7 @@ function AddressForm() {
               </div>
 
               <div className="bg-purple w-2/3 h-full flex flex-col justify-center items-center ">
-                <img src={Checklist} alt="homeimg" className="img" />
+                <img src={Checklist} alt="homeimg" className="img"/>
               </div>
             </div>
           </div>

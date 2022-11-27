@@ -1,7 +1,6 @@
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import City from "../../assets/svg/city_buildings.svg";
-import NavBar from "../../containers/NavBar/NavBar";
 function ListAddress() {
   return (
     <>
