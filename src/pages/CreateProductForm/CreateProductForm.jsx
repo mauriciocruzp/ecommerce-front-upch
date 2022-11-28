@@ -1,6 +1,5 @@
 import ImgSvg from '../../assets/svg/img.svg';
 import { Formik } from 'formik';
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { createProduct } from '../../api/services/product';
@@ -8,7 +7,6 @@ import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import Textarea from '../../components/Input/Textarea';
 import NavBar from '../../containers/NavBar/NavBar';
-import useAuth from '../../hooks/useAuth';
 import HomeSvg from '../../assets/svg/home.svg';
 import ProductSvg from '../../assets/svg/product.svg';
 import OrderSvg from '../../assets/svg/order.svg';
@@ -23,8 +21,7 @@ import {
   useGetProductStatusQuery,
 } from '../../api/services/ecommerceApi';
 
-const ProductForm = () => {
-  const { authState } = useAuth();
+const CreateProductForm = () => {
 
   const [filename, setFilename] = useState(null);
 
@@ -287,4 +284,4 @@ const ProductForm = () => {
     </>
   );
 };
-export default ProductForm;
+export default CreateProductForm;
