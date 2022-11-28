@@ -34,6 +34,40 @@ export async function createProduct(
   }
 }
 
+export async function updateProduct(
+  id,
+  title,
+  description,
+  price,
+  stock,
+  imageUrl,
+  categoryIds
+) {
+  try {
+    const response = await axiosInstance.put(
+      `/product/${id}`,
+      {
+        title,
+        description,
+        price,
+        stock,
+        imageUrl,
+        categoryIds,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+      }
+    );
+    return response;
+  } catch (error) {
+    console.log(error);
+    return error.response;
+  }
+}
+
 export async function getListProduct() {
   const response = axiosInstance.get('/product');
 
@@ -51,6 +85,6 @@ export async function getProductById(id) {
 
 export async function searchByKeyword(keyword) {
   const response = axiosInstance.get(`/product/?keyword=${keyword}`);
-  
+
   return response;
 }
