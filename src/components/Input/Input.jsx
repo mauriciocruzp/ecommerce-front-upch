@@ -16,7 +16,7 @@ function Input({
       placeholder={placeholder}
       onChange={handleChange}
       onBlur={handleBlur}
-      className='bg-purple-white w-full rounded-md px-3 py-1 placeholder-intermidiate focus:outline-none focus:outline-principal-purple'
+      className='bg-gray-50 w-full rounded-md px-3 py-1 placeholder-gray-400 focus:outline-none focus:outline-principal-purple'
     />
   );
 }
