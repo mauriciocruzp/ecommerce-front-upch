@@ -14,10 +14,12 @@ import Checkout from './Checkout/Checkout';
 import SearchPage from './SearchPage/SearchPage';
 import Cart from './Cart/Cart';
 import AdminRoute from '../components/AdminRoute/AdminRoute';
+import { Provider } from 'react-redux';
+import { store } from '../store';
 
 function App() {
   return (
-    <>
+    <Provider store={store}>
       <BrowserRouter>
         <AuthProvider>
           <Routes>
@@ -40,7 +42,7 @@ function App() {
           </Routes>
         </AuthProvider>
       </BrowserRouter>
-    </>
+    </Provider>
   );
 }
 
