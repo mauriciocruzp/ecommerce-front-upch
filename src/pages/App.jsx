@@ -3,7 +3,7 @@ import AuthProvider from '../context/AuthContext/AuthProvider';
 import Admin from './Admin/Admin';
 import Home from './Home/Home';
 import LogIn from './LogIn/LogIn';
-import ProductForm from './ProductForm/ProductForm';
+import CreateProductForm from './CreateProductForm/CreateProductForm';
 import ProductDetail from './ProductDetail/ProductDetail';
 import SignUp from './SignUp/SignUp';
 import AddressForm from './AddressForm/AddressForm';
@@ -16,6 +16,7 @@ import Cart from './Cart/Cart';
 import AdminRoute from '../components/AdminRoute/AdminRoute';
 import { Provider } from 'react-redux';
 import { store } from '../store';
+import UpdateProductForm from './UpdateProductForm/UpdateProductForm';
 
 function App() {
   return (
@@ -26,7 +27,11 @@ function App() {
             <Route element={<AuthRoute />}>
               <Route element={<AdminRoute />}>
                 <Route path='/admin' element={<Admin />} />
-                <Route path='/product/new' element={<ProductForm />} />
+                <Route path='/product/new' element={<CreateProductForm />} />
+                <Route
+                  path='/product/:id/edit'
+                  element={<UpdateProductForm />}
+                />
               </Route>
               <Route path='/addressform' element={<AddressForm />} />
               <Route path='/cart' element={<Cart />} />
