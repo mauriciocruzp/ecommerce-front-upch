@@ -10,7 +10,6 @@ import NavBar from '../../containers/NavBar/NavBar';
 import HomeSvg from '../../assets/svg/home.svg';
 import ProductSvg from '../../assets/svg/product.svg';
 import OrderSvg from '../../assets/svg/order.svg';
-import { getCategories } from '../../api/services/category';
 import { useState } from 'react';
 import Spinner from '../../components/Spinner/Spinner';
 import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
