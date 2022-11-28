@@ -12,8 +12,8 @@ import NotFound from './NotFound/NotFound';
 import AuthRoute from '../components/AuthRoute/AuthRoute';
 import Checkout from './Checkout/Checkout';
 import SearchPage from './SearchPage/SearchPage';
-import Cart from "./Cart/Cart";
-
+import Cart from './Cart/Cart';
+import AdminRoute from '../components/AdminRoute/AdminRoute';
 
 function App() {
   return (
@@ -22,10 +22,12 @@ function App() {
         <AuthProvider>
           <Routes>
             <Route element={<AuthRoute />}>
-              <Route path='admin/new-product' element={<ProductForm />} />
-              <Route path='/admin' element={<Admin />} />
+              <Route element={<AdminRoute />}>
+                <Route path='/admin' element={<Admin />} />
+                <Route path='/product/new' element={<ProductForm />} />
+              </Route>
               <Route path='/addressform' element={<AddressForm />} />
-              <Route path="/cart" element={<Cart />}/>  
+              <Route path='/cart' element={<Cart />} />
               <Route path='/checkout' element={<Checkout />} />
               <Route path='/listaddress' element={<ListAddress />}></Route>
             </Route>
