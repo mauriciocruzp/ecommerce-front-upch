@@ -58,6 +58,7 @@ function LogIn() {
           handleSubmit
         }) => (
         <div>
+          {console.log(errors)}
           <div className="h-screen flex justify-between items-center">
             <div className="w-2/3 h-full grid justify-items-center items-center">
               <div className="w-2/3">
@@ -72,6 +73,9 @@ function LogIn() {
                       type="email"
                       name="email"
                       id="email"
+                      value={values.email}
+                      handleChange={handleChange}
+                      handleBlur={handleBlur}
                       placeholder={"Correo electronico"}
                       className="w-full text-xl" />
                   </div>
@@ -80,6 +84,9 @@ function LogIn() {
                       type="password"
                       name="password"
                       id="password"
+                      value={values.password}
+                      handleChange={handleChange}
+                      handleBlur={handleBlur}
                       placeholder={"Contraseña"}
                       className="w-full text-xl" />
                   </div>
