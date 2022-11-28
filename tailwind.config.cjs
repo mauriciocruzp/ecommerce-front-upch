@@ -13,6 +13,7 @@ module.exports = {
         'light-white': '#C1A9F0',
         'intermidiate': '#A887EB',
         'input-purple': '#E8DFFA',
+        'gray-custom': '#D9D9D9',
       },
       fontFamily: {
         'poppins': ['Poppins', 'sans-serif'],

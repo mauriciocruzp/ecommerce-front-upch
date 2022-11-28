@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import { Formik } from 'formik';
 import { createUser } from '../../api/services/user';
 import { useNavigate } from 'react-router-dom';
-import {Register} from '../../assets/svg/register.svg'
+import Register from '../../assets/svg/register.svg'
 
 function SignUp() {
 
@@ -69,15 +69,15 @@ function SignUp() {
       }) => (
         <div>
           <div className='h-screen flex justify-between items-center'>
-          <div className='w-2/3 h-full flex flex-col grid justify-items-center items-center'>
+          <div className='w-2/3 h-full grid justify-items-center items-center'>
             <div className='w-2/3'>
                 <h1 className='pb-2 text-5x.l'>Crea tu cuenta</h1>
                 <p className='pb-2 text-4x-l'> Crea hoy tu cuenta y empieza a disfrutar de nuestros beneficios</p>
                 <form onSubmit={hadleSubmit}>
-                    <div>
+                    <div className='mt-6'>
                     <Input
                     id='firstName'
-                    text='Nombre'
+                    placeholder='Nombre'
                     type='text'
                     value={values.firstName}
                     handleChange={handleChange}
@@ -87,10 +87,10 @@ function SignUp() {
                     <p className='error-text'>{errors.firstName}</p>
                   )}
                     </div>
-                    <div>
+                    <div className='mt-6'>
                     <Input
                     id='lastName'
-                    text='Apellido'
+                    placeholder='Apellido'
                     type='text'
                     value={values.lastName}
                     handleChange={handleChange}
@@ -100,10 +100,10 @@ function SignUp() {
                     <p className='error-text'>{errors.lastName}</p>
                   )}
                     </div>
-                    <div>
+                    <div className='mt-6'>
                     <Input
                     id='dateOfBirth'
-                    text='Fecha de nacimiento'
+                    placeholder='Fecha de nacimiento'
                     type='date'
                     value={values.dateOfBirth}
                     handleChange={handleChange}
@@ -113,10 +113,10 @@ function SignUp() {
                     <p className='error-text'>{errors.dateOfBirth}</p>
                   )}
                     </div>
-                    <div>
+                    <div className='mt-6'>
                     <Input
                       id='email'
-                      text='Correo Electronico'
+                      placeholder='Correo Electronico'
                       type='email'
                       value={values.email}
                       handleChange={handleChange}
@@ -126,10 +126,10 @@ function SignUp() {
                       <p className='error-text'>{errors.email}</p>
                       )}
                     </div>
-                    <div>
+                    <div className='mt-6'>
                     <Input
                       id='password'
-                      text='Contraseña'
+                      placeholder='Contraseña'
                       type='password'
                       value={values.password}
                       handleChange={handleChange}
@@ -139,10 +139,10 @@ function SignUp() {
                     <p className='error-text'>{errors.password}</p>
                     )}
                     </div>
-                    <div>
+                    <div className='mt-6'>
                     <Input
                     id='passwordConfirmation'
-                    text='Confirmar contraseña'
+                    placeholder='Confirmar contraseña'
                     type='password'
                     value={values.passwordConfirmation}
                     handleChange={handleChange}
@@ -156,7 +156,7 @@ function SignUp() {
                     )}
                     </div>
                     <div className="btn-container" style={{marginTop: "30px", marginButtom: "20px"}} type="submit">
-                      <Button className="primary-button" text="Agregar direccion" width="278px" type="submit"/>
+                      <Button className="primary-button" text="Agregar direccion" width="278px" type="submit">Registrarse</Button>
                     </div>
                     <div>
                       <p style={{ marginRight: '5px' }}>¿Ya tienes cuenta? </p>

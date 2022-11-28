@@ -19,3 +19,17 @@ export async function addToCart(productId, quantity) {
     }
 }
 
+export async function getCart() {
+    try {
+        const response = await axiosInstance.get('/order/user', {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        });
+        return response;
+    }catch (error) {
+        console.log(error);
+        return error.response;
+    }
+}

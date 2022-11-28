@@ -1,13 +1,66 @@
 import { axiosInstance } from '../axios';
 
-export async function createProduct(formData) {
+export async function createProduct(
+  title,
+  description,
+  price,
+  stock,
+  imageUrl,
+  categoryIds
+) {
   try {
-    const response = await axiosInstance.post('/product', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+    const response = await axiosInstance.post(
+      '/product',
+      {
+        title,
+        description,
+        price,
+        stock,
+        imageUrl,
+        categoryIds,
+        productStatusId: 1,
       },
-    });
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+      }
+    );
+    return response;
+  } catch (error) {
+    console.log(error);
+    return error.response;
+  }
+}
+
+export async function updateProduct(
+  id,
+  title,
+  description,
+  price,
+  stock,
+  imageUrl,
+  categoryIds
+) {
+  try {
+    const response = await axiosInstance.put(
+      `/product/${id}`,
+      {
+        title,
+        description,
+        price,
+        stock,
+        imageUrl,
+        categoryIds,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+      }
+    );
     return response;
   } catch (error) {
     console.log(error);
@@ -28,4 +81,10 @@ export async function getProductById(id) {
   } catch (error) {
     return error;
   }
+}
+
+export async function searchByKeyword(keyword) {
+  const response = axiosInstance.get(`/product/?keyword=${keyword}`);
+
+  return response;
 }

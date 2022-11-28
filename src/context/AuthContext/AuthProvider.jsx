@@ -1,21 +1,38 @@
+import jwtDecode from 'jwt-decode';
 import { useReducer } from 'react';
 
 import authReducer from '../../reducers/authReducer';
 import AuthContext from './AuthContext';
 
 const INITIAL_STATE = {
+  user: {
+    id: null,
+    fullName: null,
+    email: null,
+    roles: [],
+  },
   accessToken: null,
   isAuthenticated: false,
 };
 
 const AuthProvider = ({ children }) => {
-  const init = initialState => {
+  const init = (initialState) => {
     const accessToken = localStorage.getItem('accessToken');
 
     if (accessToken === null) return initialState;
 
+    const { userId: id, fullName, sub: email, roles } = jwtDecode(accessToken);
+
+    const user = {
+      id,
+      fullName,
+      email,
+      roles,
+    };
+
     return {
       ...initialState,
+      user,
       accessToken,
       isAuthenticated: true,
     };
@@ -23,7 +40,7 @@ const AuthProvider = ({ children }) => {
 
   const [authState, dispatch] = useReducer(authReducer, INITIAL_STATE, init);
 
-  const setAccessToken = accessToken => {
+  const setAccessToken = (accessToken) => {
     dispatch({
       type: 'SET_ACCESS_TOKEN',
       payload: accessToken,
