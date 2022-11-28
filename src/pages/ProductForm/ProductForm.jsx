@@ -18,25 +18,21 @@ import Spinner from '../../components/Spinner/Spinner';
 import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
 import { uploadFile } from '../../api/services/file';
 import TextError from '../../components/TextError/TextError';
+import {
+  useGetCategoriesQuery,
+  useGetProductStatusQuery,
+} from '../../api/services/ecommerceApi';
 
 const ProductForm = () => {
   const { authState } = useAuth();
 
-  const [categories, setCategories] = useState(null);
-
   const [filename, setFilename] = useState(null);
 
-  useEffect(() => {
-    console.log(authState.accessToken);
+  const { data: categoryResponse, isLoading: isLoadingCategory } =
+    useGetCategoriesQuery();
 
-    const fetchCategories = async () => {
-      const response = await getCategories();
-
-      setCategories(response.data.data);
-    };
-
-    fetchCategories();
-  }, []);
+  const { data: productStatusResponse, isLoading: isLoadingProductStatus } =
+    useGetProductStatusQuery();
 
   const navigate = useNavigate();
 
@@ -47,6 +43,7 @@ const ProductForm = () => {
     stock: '',
     price: '',
     categoryIds: [],
+    productStatusId: '',
   };
 
   const validationSchema = Yup.object({
@@ -83,12 +80,18 @@ const ProductForm = () => {
   };
 
   const renderCategories = () =>
-    categories.map((category) => (
+    categoryResponse.data.map((category) => (
       <option key={category.id} value={category.id}>
         {capitalizeFirstLetter(category.name)}
       </option>
     ));
 
+  const renderProductStatus = () =>
+    productStatusResponse.data.map((productStatus) => (
+      <option key={productStatus.id} value={productStatus.id}>
+        {capitalizeFirstLetter(productStatus.name)}
+      </option>
+    ));
   return (
     <>
       <NavBar />
@@ -184,9 +187,12 @@ const ProductForm = () => {
                         <TextError>{errors.stock}</TextError>
                       )}
                     </div>
+
                     <div className='flex flex-col gap-2'>
                       <label>Category:</label>
-                      {categories ? (
+                      {isLoadingCategory ? (
+                        <Spinner />
+                      ) : (
                         <select
                           value={values.categoryIds}
                           onChange={handleChange}
@@ -197,8 +203,6 @@ const ProductForm = () => {
                         >
                           {renderCategories()}
                         </select>
-                      ) : (
-                        <Spinner />
                       )}
                       {errors.categoryIds && touched.categoryIds && (
                         <TextError>{errors.categoryIds}</TextError>
@@ -247,6 +251,27 @@ const ProductForm = () => {
                       </div>
                       {errors.image && touched.image && (
                         <TextError>{errors.image}</TextError>
+                      )}
+                    </div>
+                    <div className='flex flex-col gap-2'>
+                      <label>Estado de la publicación:</label>
+                      {isLoadingProductStatus ? (
+                        <Spinner />
+                      ) : (
+                        <>
+                          <select
+                            name='productStatusId'
+                            value={values.productStatusId}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-principal-purple block w-full p-2.5'
+                          >
+                            {renderProductStatus()}
+                          </select>
+                        </>
+                      )}
+                      {errors.productStatusId && touched.productStatusId && (
+                        <TextError>{errors.productStatusId}</TextError>
                       )}
                     </div>
                   </div>
