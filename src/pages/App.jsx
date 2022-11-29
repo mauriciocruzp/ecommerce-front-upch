@@ -42,7 +42,7 @@ function App() {
             <Route path='/register' element={<SignUp />} />
             <Route path='/login' element={<LogIn />} />
             <Route path='/product/:id' element={<ProductDetail />} />
-            <Route path='/searchpage' element={<SearchPage />} />
+            <Route path='/product' element={<SearchPage />} />
             <Route path='/*' element={<NotFound />} />
           </Routes>
         </AuthProvider>
