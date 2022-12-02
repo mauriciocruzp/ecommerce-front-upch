@@ -28,7 +28,7 @@ function Cart() {
     return cart.map((item) => {
       return <div className="flex justify-between">
         <p className="text-xl text-gray-300">{item.product.title} x {item.quantity}</p>
-        <p className="text-xl font-semibold">${item.product.price * item.quantity}</p>
+        <p className="text-xl font-semibold">{item.product.price * item.quantity}</p>
       </div>;
     });
   }
@@ -39,6 +39,12 @@ function Cart() {
     }, 0);
   }
 
+  function getTotalItems(){
+    return cart.reduce((acc, item) => {
+      return acc + item.quantity;
+    }, 0)
+  }
+
   return (
     <>
       <NavBar />
@@ -47,7 +53,7 @@ function Cart() {
           <div className="w-full md:w-2/3 p-5 col-span-2">
             <div className="flex justify-between items-center">
               <p className="text-2xl font-semibold">Carrito de compras</p>
-              <p className="text-xl  ">4 articulos</p>
+              <p className="text-xl  ">{cart ? getTotalItems() : "0"} Articulos</p>
             </div>
 
             <hr className="bg-gray-300 my-2" />
@@ -55,8 +61,8 @@ function Cart() {
             {cart ? (
               renderCartItems()
             ) : (
-              <div className="w-full flex justify-center">
-                <Spinner />
+              <div className="w-full flex justify-center items-center">
+                <p className="text-xl text-gray-400">No hay productos para mostrar.</p>
               </div>
             )}
           </div>
@@ -70,7 +76,7 @@ function Cart() {
                 getPricesByProduct()
               ) : (
                 <div className="w-full flex justify-center">
-                  <Spinner />
+                  <p className="text-xl text-gray-400 text-center my-10">Tu carrito de compras esta vacio</p>
                 </div>
               )}
 
@@ -78,14 +84,21 @@ function Cart() {
 
               <div className="flex justify-between mb-4">
                 <p className="text-xl ">Total</p>
-                <p className="text-xl font-semibold">{cart ? (`$${getTotalPrice()}`) : "No"}</p>
+                <p className="text-xl font-semibold">${cart ? (getTotalPrice()) : "0"}</p>
               </div>
 
-              <Button
+
+              {cart ? (
+                <Button
                 children={"Proceder al pago"}
                 width="w-full text-xl"
                 type="submit"
               />
+              ) : (
+                ""
+              )}
+
+              
             </div>
           </div>
         </div>
