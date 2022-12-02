@@ -24,3 +24,29 @@ export async function createAddress(
         return error.response;
     }
 }
+
+export async function updateAddress(
+    id,
+    street,
+    state,
+    country
+){
+    try{
+        const response = await axiosInstance.put(
+            `/address/${id}`,
+            {
+                street,
+                zipcode,
+                state,
+                country
+            },
+            {
+                headers:{
+                    "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
+                }
+            }
+        )
+    }catch(error){
+        return error.response;
+    }
+}
