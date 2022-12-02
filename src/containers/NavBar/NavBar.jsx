@@ -4,7 +4,6 @@ import AvatarSvg from '../../assets/svg/avatar.svg';
 import { Link, useNavigate } from 'react-router-dom';
 
 function NavBar() {
-
   const navigate = useNavigate();
 
   function handleSubmit(e) {
@@ -29,12 +28,12 @@ function NavBar() {
         />
       </form>
       <div className='flex justify-center items-center gap-20'>
-        <a
-          href='#'
+        <Link
+          to='/cart'
           className='w-8 h-8 px-2.5 py-1.5 bg-principal-purple rounded-xl flex justify-center items-center'
         >
           <img src={CartSvg} className='w-3.5 h-3.5' />
-        </a>
+        </Link>
         <div className='w-8 h-8'>
           <img src={AvatarSvg} className='w-full h-full' draggable={false} />
         </div>
