@@ -65,7 +65,8 @@ const CreateProductForm = () => {
       values.price,
       values.stock,
       fileResponse.data.data.url,
-      values.categoryIds
+      values.categoryIds,
+      values.productStatusId
     );
 
     if (response.status === 201) {

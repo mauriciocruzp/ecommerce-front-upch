@@ -66,17 +66,19 @@ const UpdateProductForm = () => {
     if (fileResponse.status !== 201) return alert('Error al subir la imagen');
 
     const response = await updateProduct(
+      params.id,
       values.title,
       values.description,
       values.price,
       values.stock,
       fileResponse.data.data.url,
-      values.categoryIds
+      values.categoryIds,
+      values.productStatusId
     );
 
     if (response.status === 200) {
       alert('Producto actualizado exitosamente');
-      navigate('/');
+      navigate('/admin');
       return;
     }
   };
