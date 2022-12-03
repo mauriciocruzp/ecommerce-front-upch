@@ -75,7 +75,7 @@ const UpdateProductForm = () => {
     );
 
     if (response.status === 200) {
-      alert('Producto creado exitosamente');
+      alert('Producto actualizado exitosamente');
       navigate('/');
       return;
     }
