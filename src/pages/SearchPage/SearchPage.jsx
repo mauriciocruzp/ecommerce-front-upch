@@ -4,12 +4,14 @@ import { searchByKeyword } from '../../api/services/product';
 import SearchCard from "../../containers/SearchCard/SearchCard";
 import Spinner from "../../components/Spinner/Spinner";
 import NavBar from '../../containers/NavBar/NavBar';
+import { useSelector } from 'react-redux';
 
 function SearchPage() {
   const [products, setProducts] = useState(null);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const keyword = searchParams.get('keyword');
+  const keywordFromStore = useSelector(state => state.keyword.value);
 
   useEffect(() => {
     async function fetchData() {
@@ -18,7 +20,7 @@ function SearchPage() {
       setProducts(response.data.data);
     }
     fetchData();
-  }, []);
+  }, [keywordFromStore]);
 
   function renderProducts() {
     return products.map((product) => {

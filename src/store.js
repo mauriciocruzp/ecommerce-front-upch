@@ -2,11 +2,13 @@ import { configureStore } from '@reduxjs/toolkit'
 // Or from '@reduxjs/toolkit/query/react'
 import { setupListeners } from '@reduxjs/toolkit/query/react'
 import { ecommerceApi } from './api/services/ecommerceApi'
+import keywordReducer from './reducers/keywordReducer'
 
 export const store = configureStore({
   reducer: {
     // Add the generated reducer as a specific top-level slice
     [ecommerceApi.reducerPath]: ecommerceApi.reducer,
+    keyword: keywordReducer,
   },
   // Adding the api middleware enables caching, invalidation, polling,
   // and other useful features of `rtk-query`.

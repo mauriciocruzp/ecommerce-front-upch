@@ -30,6 +30,9 @@ export const ecommerceApi = createApi({
     getProductStatus: builder.query({
       query: () => '/product-status',
     }),
+    getAddressById: builder.query({
+      query: (id) => `/address/${id}`
+    })
   }),
 });
 
@@ -40,4 +43,5 @@ export const {
   useGetProductByIdQuery,
   useGetCategoriesQuery,
   useGetProductStatusQuery,
+  useGetAddressByIdQuery
 } = ecommerceApi;

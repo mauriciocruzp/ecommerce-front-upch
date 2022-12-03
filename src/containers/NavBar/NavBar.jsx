@@ -3,15 +3,23 @@ import SearchSvg from '../../assets/svg/search.svg';
 import CartSvg from '../../assets/svg/cart.svg';
 import AvatarSvg from '../../assets/svg/avatar.svg';
 import { Link, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { update } from '../../reducers/keywordReducer';
 import { Fragment } from 'react';
 
 function NavBar() {
+
+  const keyword = useSelector(state => state.keyword.value);
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
   function handleSubmit(e) {
+    e.preventDefault();
     const keyword = document.getElementById('searchInput').value;
-    console.log(keyword);
-    navigate(`/searchpage/?keyword=${keyword}`);
+    dispatch(update(keyword));
+    navigate(`/product?keyword=${keyword}`);
   }
 
   return (
@@ -27,6 +35,7 @@ function NavBar() {
           type='text'
           className='w-full h-full bg-slate-100 rounded-full px-10 text-sm'
           id='searchInput'
+          defaultValue={keyword}
         />
       </form>
       <div className='flex justify-center items-center gap-20'>
