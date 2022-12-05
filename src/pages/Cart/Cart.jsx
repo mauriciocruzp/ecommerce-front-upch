@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { getCart } from "../../api/services/cart";
 import Button from "../../components/Button/Button";
 import CartItem from "../../components/CartItem/CartItem";
-import Spinner from "../../components/Spinner/Spinner";
 import NavBar from "../../containers/NavBar/NavBar";
+import CartContext from "../../context/CartContext";
 
 function Cart() {
   const [cart, setCart] = useState(null);
+  const [totalItems, setTotalItems] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     async function fetchData() {
@@ -16,6 +18,27 @@ function Cart() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    if (cart) {
+      let total = 0;
+      cart.forEach((item) => {
+        total += item.quantity;
+      });
+      setTotalItems(total);
+    }
+  }, [cart]);
+
+  useEffect(() => {
+    if (cart) {
+      let total = 0;
+      cart.forEach((item) => {
+        total += item.quantity * item.product.price;
+      });
+      setTotalPrice(total);
+    }
+  }, [cart]);
+
+
   function renderCartItems() {
     return cart.map((item) => {
       return <CartItem key={item.id} item={item} />;
@@ -24,41 +47,23 @@ function Cart() {
 
   console.log(cart);
 
-  function getPricesByProduct() {
-    return cart.map((item) => {
-      return <div className="flex justify-between">
-        <p className="text-xl text-gray-300">{item.product.title} x {item.quantity}</p>
-        <p className="text-xl font-semibold">{item.product.price * item.quantity}</p>
-      </div>;
-    });
-  }
 
-  function getTotalPrice() {
-    return cart.reduce((acc, item) => {
-      return acc + item.product.price * item.quantity;
-    }, 0);
-  }
-
-  function getTotalItems(){
-    return cart.reduce((acc, item) => {
-      return acc + item.quantity;
-    }, 0)
-  }
 
   return (
     <>
       <NavBar />
+      <CartContext.Provider value={cart ? {totalItems, setTotalItems, totalPrice, setTotalPrice} : 0}>
       <div>
         <div className="md:flex gap-2 mx-4  mt-8">
           <div className="w-full md:w-2/3 p-5 col-span-2">
             <div className="flex justify-between items-center">
               <p className="text-2xl font-semibold">Carrito de compras</p>
-              <p className="text-xl  ">{cart ? getTotalItems() : "0"} Articulos</p>
+              <p className="text-xl  ">{cart ? totalItems : "0"} Articulos</p>
             </div>
 
             <hr className="bg-gray-300 my-2" />
 
-            {cart ? (
+            {cart || totalItems < 0 ? (
               renderCartItems()
             ) : (
               <div className="w-full flex justify-center items-center">
@@ -72,8 +77,10 @@ function Cart() {
 
               <hr className="bg-gray-300 my-2" />
 
-              {cart ? (
-                getPricesByProduct()
+              {cart || totalItems < 0 ? (
+                <div className="w-full flex justify-center">
+                <p className="text-xl text-gray-400 text-center my-10">Subtotal ({totalItems} Articulos): <span className="font-semibold text-black">${totalPrice}</span></p>
+              </div>
               ) : (
                 <div className="w-full flex justify-center">
                   <p className="text-xl text-gray-400 text-center my-10">Tu carrito de compras esta vacio</p>
@@ -81,12 +88,6 @@ function Cart() {
               )}
 
               <hr className="bg-gray-300" />
-
-              <div className="flex justify-between mb-4">
-                <p className="text-xl ">Total</p>
-                <p className="text-xl font-semibold">${cart ? (getTotalPrice()) : "0"}</p>
-              </div>
-
 
               {cart ? (
                 <Button
@@ -103,6 +104,7 @@ function Cart() {
           </div>
         </div>
       </div>
+      </CartContext.Provider>
     </>
   );
 }
