@@ -14,8 +14,10 @@ function LogIn() {
   const { setAccessToken, authState } = useAuth();
 
   useEffect(() => {
-    console.log(authState);
-  }, [authState]);
+    if (authState.accessToken) {
+      navigate('/');
+    }
+  }, []);
 
   const navigate = useNavigate();
 

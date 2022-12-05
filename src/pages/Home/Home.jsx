@@ -6,7 +6,7 @@ import Footer from '../../components/Footer/Footer.jsx';
 import { useGetProductsQuery } from '../../api/services/ecommerceApi.js';
 
 function Home() {
-  const { data, isLoading } = useGetProductsQuery();
+  const { data, isLoading, isError } = useGetProductsQuery();
 
   function renderProducts() {
     return data.data.map((product) => {
@@ -20,7 +20,7 @@ function Home() {
       <HomeBanner />
       <div className='mt-8 mx-10'>
         <h2>Ultimos vistos</h2>
-        {isLoading ? (
+        {isLoading || isError ? (
           <div className='w-full flex justify-center'>
             <Spinner />
           </div>

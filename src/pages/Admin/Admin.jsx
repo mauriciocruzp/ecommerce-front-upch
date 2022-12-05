@@ -6,6 +6,7 @@ import NavBar from '../../containers/NavBar/NavBar';
 import Button from '../../components/Button/Button';
 import StatsCard from '../../containers/Card/StatsCard';
 import OrderCard from '../../containers/Card/OrderCard';
+import routes from '../../consts/routes';
 
 function Admin() {
 
@@ -38,9 +39,9 @@ function Admin() {
           <StatsCard />
         </div>
       </div>
-        <div className='py-4 pr-12'>
+        <Link to={routes.productNew} className='py-4 pr-12'>
           <Button type="submit">Nuevo producto</Button>
-        </div>
+        </Link>
     </div>
     </>
   );

@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { update } from '../../reducers/keywordReducer';
 import { Fragment } from 'react';
+import routes from '../../consts/routes';
 
 function NavBar() {
 
@@ -24,7 +25,7 @@ function NavBar() {
 
   return (
     <div className='flex w-full h-12 px-8 justify-between bg-white items-center shadow-sm'>
-      <Link to='/'>
+      <Link to={routes.home}>
         <h3 className='text-lg'>E-commerce</h3>
       </Link>
       <form className='w-1/2 h-2/3 flex items-center' onSubmit={handleSubmit}>
@@ -40,7 +41,7 @@ function NavBar() {
       </form>
       <div className='flex justify-center items-center gap-20'>
         <Link
-          to='/cart'
+          to={routes.cart}
           className='w-8 h-8 px-2.5 py-1.5 bg-principal-purple rounded-xl flex justify-center items-center'
         >
           <img src={CartSvg} className='w-3.5 h-3.5' />
@@ -80,7 +81,7 @@ function NavBar() {
               >
                 <div className='py-1' role='none'>
                   <Link
-                    to='/'
+                    to={routes.addressList}
                     className='text-gray-700 block px-4 py-2 text-sm'
                     role='menuitem'
                     tabIndex='-1'
@@ -89,7 +90,7 @@ function NavBar() {
                     Mis direcciones
                   </Link>
                   <Link
-                    to='/admin'
+                    to={routes.admin}
                     className='text-gray-700 block px-4 py-2 text-sm'
                     role='menuitem'
                     tabIndex='-1'
