@@ -28,6 +28,7 @@ export async function createAddress(
 export async function updateAddress(
     id,
     street,
+    zipcode,
     state,
     country
 ){
@@ -46,6 +47,8 @@ export async function updateAddress(
                 }
             }
         )
+        return response;
+
     }catch(error){
         return error.response;
     }

@@ -36,7 +36,7 @@ function App() {
               <Route path='/addressform' element={<AddressForm />} />
               <Route path='/cart' element={<Cart />} />
               <Route path='/checkout' element={<Checkout />} />
-              <Route path='/address/:id/update' element={<UpdateAddress/>}></Route>
+              <Route path='/address/:id/update' element={<UpdateAddress/>}/>
             </Route>
             <Route path='/' element={<Home />} />
             <Route path='/register' element={<SignUp />} />

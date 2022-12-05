@@ -35,16 +35,20 @@ function UpdateAddress() {
   });
   const handleSubmit = async (values) => {
     const response = await updateAddress(
+      params.id,
       values.street,
       values.zipcode,
       values.state,
       values.country
     );
+    console.log(response)
     if (response.status === 200) {
       alert("Direccion actualizada correctamente");
       navigate("/");
       return;
     }
+    alert(response.data.message);
+    return
   };
   return (
     <>
@@ -53,7 +57,7 @@ function UpdateAddress() {
       <div className="h-screen flex justify-between items-center">
         <div className="w-2/3 h-full grid justify-items-center items-center">
           <div className="w-2/3">
-            <h1 className="pb-2 text-5x-l">Edita tu direccion</h1>
+            <h1 className="pb-2 text-5x-l">Actualiza tu direccion</h1>
             {isLoadingAddress ? (
               <Spinner />
             ) : (
@@ -147,7 +151,7 @@ function UpdateAddress() {
                           width="w-full"
                           type="submit"
                         >
-                          Agregar dirección
+                          Actualiza tu dirección
                         </Button>
                       </div>
                     </form>
