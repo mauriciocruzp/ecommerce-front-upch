@@ -18,7 +18,7 @@ function Home() {
     <>
       <NavBar />
       <HomeBanner />
-      <div className='mt-8 mx-10'>
+      <div className='mt-8 mb-20 mx-10'>
         <h2>Ultimos vistos</h2>
         {isLoading || isError ? (
           <div className='w-full flex justify-center'>
