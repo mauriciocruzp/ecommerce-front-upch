@@ -2,6 +2,7 @@ import { generatePath, Link } from 'react-router-dom';
 import { useGetProductsQuery } from '../../api/services/ecommerceApi';
 import AdminSideBar from '../../components/AdminSideBar/AdminSideBar';
 import Button from '../../components/Button/Button';
+import Footer from '../../components/Footer/Footer';
 import Spinner from '../../components/Spinner/Spinner';
 import routes from '../../consts/routes';
 import NavBar from '../../containers/NavBar/NavBar';
@@ -12,7 +13,10 @@ const ProductList = () => {
   const renderProducts = () => {
     return data.data.map((product) => {
       return (
-        <div className='flex justify-between items-center px-4 pb-4 border-b-2 border-gray-100'>
+        <div
+          key={product.id}
+          className='flex justify-between items-center px-4 pb-4 border-b-2 border-gray-100'
+        >
           <div className='flex gap-8'>
             <Link to={generatePath(routes.productDetail, { id: product.id })}>
               <img
@@ -40,11 +44,11 @@ const ProductList = () => {
   };
 
   return (
-    <div className='h-screen'>
+    <>
       <NavBar />
       <div className='flex h-full'>
         <AdminSideBar />
-        <div className='w-4/5 px-32 py-5 bg-white flex flex-col gap-8'>
+        <div className='w-4/5 px-32 pt-5 pb-28 bg-white flex flex-col gap-8'>
           <div className='flex w-full justify-between items-center'>
             <h1>Lista de productos</h1>
             <Link to={routes.productNew}>
@@ -54,14 +58,17 @@ const ProductList = () => {
 
           <div>
             {isLoading ? (
-              <Spinner />
+              <div className='h-screen flex justify-center pt-10'>
+                <Spinner />
+              </div>
             ) : (
               <div className='flex flex-col gap-10'>{renderProducts()}</div>
             )}
           </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
