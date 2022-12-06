@@ -1,8 +1,13 @@
 import NavBar from "../../containers/NavBar/NavBar";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
+import CartContext from "../../context/CartContext";
+import { useContext } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+
 
 function Checkout() {
+
   return (
     <>
       <div className="h-screen">
@@ -41,7 +46,11 @@ function Checkout() {
               <div className="w-4/5 bg-white rounded p-6">
                 <p className="text-xl font-semibold">Resumen de compra</p>
                 <hr className="bg-gray-300 my-2" />
-                <p className="text-lg mx-6 mt-6">Productos {2}</p>
+                <div className="w-full flex justify-center flex-col">
+                  <p className="text-xl text-gray-400 text-center my-10">Subtotal ({3} Articulos): <span className="font-semibold text-black">${8}</span></p>
+                  <hr className="bg-gray-300 my-2" />
+                  <p className="text-xl text-gray-400 text-center my-10">Total : <span className="font-semibold text-black">${8}</span></p>
+                </div>
               </div>
             </div>
           </div>
