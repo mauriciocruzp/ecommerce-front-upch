@@ -3,7 +3,6 @@ import SearchSvg from '../../assets/svg/search.svg';
 import CartSvg from '../../assets/svg/cart.svg';
 import AvatarSvg from '../../assets/svg/avatar.svg';
 import { Link, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { update } from '../../reducers/keywordReducer';
 import { Fragment } from 'react';
