@@ -18,6 +18,7 @@ import { Provider } from 'react-redux';
 import { store } from '../store';
 import UpdateProductForm from './UpdateProductForm/UpdateProductForm';
 import routes from '../consts/routes';
+import ProductList from './ProductList/ProductList';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
                   path={routes.productEdit}
                   element={<UpdateProductForm />}
                 />
+                <Route path={routes.productList} element={<ProductList />} />
               </Route>
               <Route path={routes.addressNew} element={<AddressForm />} />
               <Route path={routes.cart} element={<Cart />} />
