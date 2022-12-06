@@ -21,6 +21,7 @@ import {
   useGetProductStatusQuery,
 } from '../../api/services/ecommerceApi';
 import { useEffect } from 'react';
+import AdminSideBar from '../../components/AdminSideBar/AdminSideBar';
 
 const UpdateProductForm = () => {
   const params = useParams();
@@ -100,23 +101,7 @@ const UpdateProductForm = () => {
     <>
       <NavBar />
       <div className='flex'>
-        <div className='w-1/5 pl-8 pt-5 flex flex-col gap-4'>
-          <h2>Panel de control</h2>
-          <ul className='flex flex-col gap-4'>
-            <div className='flex gap-2'>
-              <img src={HomeSvg} className='w-4' />
-              <li>Home</li>
-            </div>
-            <div className='flex gap-2'>
-              <img src={ProductSvg} className='w-4' />
-              <li>Productos</li>
-            </div>
-            <div className='flex gap-2'>
-              <img src={OrderSvg} className='w-4' />
-              <li>Ordenes</li>
-            </div>
-          </ul>
-        </div>
+        <AdminSideBar />
         <div className='w-4/5 pl-32 py-5 bg-white'>
           <h1>Actualizar producto existente</h1>
           {isLoadingProduct ? (
