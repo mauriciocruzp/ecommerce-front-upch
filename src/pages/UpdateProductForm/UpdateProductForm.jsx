@@ -102,10 +102,12 @@ const UpdateProductForm = () => {
       <NavBar />
       <div className='flex'>
         <AdminSideBar />
-        <div className='w-4/5 pl-32 py-5 bg-white'>
+        <div className='w-4/5 h-screen pl-32 py-5 bg-white'>
           <h1>Actualizar producto existente</h1>
           {isLoadingProduct ? (
-            <Spinner />
+            <div className='pt-14'>
+              <Spinner />
+            </div>
           ) : (
             <Formik
               initialValues={initialValues}
