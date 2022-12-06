@@ -15,7 +15,7 @@ function Card({ product }) {
   };
 
   return (
-    <div className='flex flex-col w-1/5 shadow-md'>
+    <div className='flex flex-col w-1/6 shadow-md'>
       <Link to={generatePath(routes.productDetail, { id: product.id })}>
         <div className='bg-gray-200 w-fit'>
           <img src={product.imageUrl} className='w-full' />
