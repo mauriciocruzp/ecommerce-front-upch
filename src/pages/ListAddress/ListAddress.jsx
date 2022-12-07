@@ -1,28 +1,26 @@
-import { useState, useEffect } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
-import {useGetListAddressbyUserIdQuery} from '../../api/services/ecommerceApi';
 import Spinner from '../../components/Spinner/Spinner';
 import NavBar from '../../containers/NavBar/NavBar';
-import {useSelector} from 'react-redux'
+import { useGetAddressesByUserIdQuery } from '../../api/services/ecommerceApi';
+
 function ListAddres() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const userId = searchParams.get('userId');
+  const { data: addressResponse, isLoading: isLoadingAddress } =
+    useGetAddressesByUserIdQuery(user.id);
 
-   
-    const [searchParams,setSearchParams] = useSearchParams()
-    const userId = searchParams.get("userId")
-    const {data: addressResponse, isLoading: isLoadingAddress} =
-        useGetListAddressbyUserIdQuery(user.id)
-
-
-    const renderAddresses =() => {
-        return address.map((address) => {
-          return (
-            <div
-            key={user.id}
-            className='flex justify-between items-center px-4 pb-4 border-b-2 border-gray-100'
-            >
-              <div className='flex gap-8'>
-              <Link to={generatePath(routes.UpdateAddress, { id: address.id })}></Link>
-               <div>
+  const renderAddresses = () => {
+    return address.map((address) => {
+      return (
+        <div
+          key={user.id}
+          className='flex justify-between items-center px-4 pb-4 border-b-2 border-gray-100'
+        >
+          <div className='flex gap-8'>
+            <Link
+              to={generatePath(routes.UpdateAddress, { id: address.id })}
+            ></Link>
+            <div>
               <Link to={generatePath(routes.UpdateAddress, { id: address.id })}>
                 <h2>Direccion : {address.id}</h2>
               </Link>
@@ -38,11 +36,11 @@ function ListAddres() {
             </Link>
           </div>
         </div>
-          )
-        });
-      }
-    return ( 
-      <>
+      );
+    });
+  };
+  return (
+    <>
       <NavBar />
       <div className='flex h-full'>
         <AdminSideBar />
@@ -66,8 +64,8 @@ function ListAddres() {
         </div>
       </div>
       <Footer />
-      </>
-     );
+    </>
+  );
 }
 
 export default ListAddres;
