@@ -8,6 +8,7 @@ import ProductDetail from './ProductDetail/ProductDetail';
 import SignUp from './SignUp/SignUp';
 import AddressForm from './AddressForm/AddressForm';
 import UpdateAddress from './UpdateAddress/UpdateAddress';
+import ListAddress from './ListAddress/ListAddress';
 import NotFound from './NotFound/NotFound';
 import AuthRoute from '../components/AuthRoute/AuthRoute';
 import Checkout from './Checkout/Checkout';
@@ -37,6 +38,7 @@ function App() {
               <Route path='/cart' element={<Cart />} />
               <Route path='/checkout' element={<Checkout />} />
               <Route path='/address/:id/update' element={<UpdateAddress/>}/>
+              <Route path='/address/:id/list' element={<ListAddress/>}/>
             </Route>
             <Route path='/' element={<Home />} />
             <Route path='/register' element={<SignUp />} />
