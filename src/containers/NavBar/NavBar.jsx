@@ -48,7 +48,7 @@ function NavBar() {
         >
           <img src={CartSvg} className='w-3.5 h-3.5' />
         </Link>
-        {authState.isAuthenticated && (
+        {authState.isAuthenticated ? (
           <Menu as='div'>
             <Menu.Button className='w-full h-8 flex items-center'>
               <img
@@ -122,6 +122,15 @@ function NavBar() {
               </Menu.Items>
             </Transition>
           </Menu>
+        ): (
+          // button to login
+          <Link
+            to={routes.login}
+            className='w-30 h-8 px-2.5 py-1.5 bg-principal-purple rounded-xl flex justify-center items-center'
+          >
+            <a className='text-white'>Iniciar sesión</a>
+          </Link>
+
         )}
       </div>
     </div>
