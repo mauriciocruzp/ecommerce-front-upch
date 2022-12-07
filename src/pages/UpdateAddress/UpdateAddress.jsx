@@ -1,6 +1,6 @@
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
-import City from "../../assets/svg/city_buildings.svg";
+import Check from '../../assets/svg/Checklist _Monochromatic.svg'
 import { useNavigate, useParams } from "react-router-dom";
 import NavBar from "../../containers/NavBar/NavBar";
 import { Formik } from "formik";
@@ -163,7 +163,7 @@ function UpdateAddress() {
         </div>
 
         <div className="bg-purple w-2/3 h-full flex flex-col justify-center items-center ">
-          <img src={City} alt="homeimg" className="img" />
+          <img src={Check} alt="homeimg" className="img" />
         </div>
       </div>
     </>

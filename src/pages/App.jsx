@@ -8,6 +8,7 @@ import ProductDetail from './ProductDetail/ProductDetail';
 import SignUp from './SignUp/SignUp';
 import AddressForm from './AddressForm/AddressForm';
 import UpdateAddress from './UpdateAddress/UpdateAddress';
+import ListAddress from './ListAddress/ListAddress';
 import NotFound from './NotFound/NotFound';
 import AuthRoute from '../components/AuthRoute/AuthRoute';
 import Checkout from './Checkout/Checkout';
@@ -39,6 +40,7 @@ function App() {
                 />
                 <Route path={routes.productList} element={<ProductList />} />
               </Route>
+              <Route path='/address/:id/list' element={<ListAddress/>}/>
               <Route path={routes.addressNew} element={<AddressForm />} />
               <Route path={routes.cart} element={<Cart />} />
               <Route path={routes.checkout} element={<Checkout />} />
