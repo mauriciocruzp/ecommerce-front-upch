@@ -40,7 +40,7 @@ function App() {
                 />
                 <Route path={routes.productList} element={<ProductList />} />
               </Route>
-              <Route path='/address/:id/list' element={<ListAddress/>}/>
+              <Route path={routes.addressList} element={<ListAddress/>}/>
               <Route path={routes.addressNew} element={<AddressForm />} />
               <Route path={routes.cart} element={<Cart />} />
               <Route path={routes.checkout} element={<Checkout />} />
