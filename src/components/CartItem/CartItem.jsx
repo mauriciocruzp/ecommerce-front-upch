@@ -28,15 +28,9 @@ function CartItem({ item }) {
     setTotalPrice(totalPrice - quantity * item.product.price + parseInt(value) * item.product.price);
     setQuantity(parseInt(value));
   
-    const response = await updateCart(item.id, value);
-    console.log(response);
-
-    if (response.status === 200) {
-      console.log("ok");
-    }
+    await updateCart(item.id, value);
     
     e.target.className = "bg-gray-50 w-full rounded-md px-3 py-1 placeholder-gray-400 focus:outline-none focus:outline-principal-purple";
-    console.log(value);
   }
 
   function getCategories() {
