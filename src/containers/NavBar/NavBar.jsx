@@ -108,6 +108,15 @@ function NavBar() {
                       </Link>
                     )}
                     <Link
+                      to={routes.orderList}
+                      className='text-gray-700 block px-4 py-2 text-sm'
+                      role='menuitem'
+                      tabIndex='-1'
+                      id='menu-item-2'
+                    >
+                      Mis pedidos
+                    </Link>
+                    <Link
                       to={routes.login}
                       onClick={() => logout()}
                       className='text-red-500 block px-4 py-2 text-sm'
