@@ -20,6 +20,12 @@ const OrderDetail = () => {
     }, 0);
   };
 
+  const status = {
+    in_progress: "En progreso",
+    delivered: "Entregado",
+    pending: "Pendiente",
+  };
+
   return (
     <>
       <NavBar />
@@ -54,7 +60,7 @@ const OrderDetail = () => {
               <p>
                 Estado del pedido:&nbsp;
                 <span className='font-medium'>
-                  {data.data.orderStatus.name}
+                  {status[data.data.orderStatus.name]}
                 </span>
               </p>
               <p>
