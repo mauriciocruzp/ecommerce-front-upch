@@ -2,20 +2,15 @@ import { useEffect, useState } from "react";
 import { getCart } from "../../api/services/cart";
 import Button from "../../components/Button/Button";
 import CartItem from "../../components/CartItem/CartItem";
-import Spinner from "../../components/Spinner/Spinner";
 import NavBar from "../../containers/NavBar/NavBar";
 import CartContext from "../../context/CartContext";
-import { update } from "../../reducers/cartReducer";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+
+import { Link } from "react-router-dom";
 
 function Cart() {
-  const [cart, setCart] = useState(0);
+  const [cart, setCart] = useState(null);
   const [totalItems, setTotalItems] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [isLoading, setLoading] = useState(false);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
