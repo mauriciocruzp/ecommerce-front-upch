@@ -2,7 +2,6 @@ import React from "react";
 import {useEffect, useState} from "react";
 import Button from "../../components/Button/Button";
 import {Link, useNavigate} from "react-router-dom";
-import { data } from "autoprefixer";
 
 
 const OrderCard = ({order}) => {

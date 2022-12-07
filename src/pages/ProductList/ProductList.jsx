@@ -1,5 +1,6 @@
-import { generatePath, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useGetProductsQuery } from '../../api/services/ecommerceApi';
+import AdminProductCard from '../../components/AdminProductCard/AdminProductCard';
 import AdminSideBar from '../../components/AdminSideBar/AdminSideBar';
 import Button from '../../components/Button/Button';
 import Footer from '../../components/Footer/Footer';
@@ -11,36 +12,7 @@ const ProductList = () => {
   const { data, isLoading } = useGetProductsQuery();
 
   const renderProducts = () => {
-    return data.data.map((product) => {
-      return (
-        <div
-          key={product.id}
-          className='flex justify-between items-center px-4 pb-4 border-b-2 border-gray-100'
-        >
-          <div className='flex gap-8'>
-            <Link to={generatePath(routes.productDetail, { id: product.id })}>
-              <img
-                className='w-20 h-20 object-cover'
-                src={product.imageUrl}
-                alt={product.name}
-              />
-            </Link>
-            <div>
-              <Link to={generatePath(routes.productDetail, { id: product.id })}>
-                <h2>{product.title}</h2>
-              </Link>
-              <p>Precio: ${product.price}</p>
-              <p>Estado de publicación: {product.productStatus.name}</p>
-            </div>
-          </div>
-          <div className='flex gap-8'>
-            <Link to={generatePath(routes.productEdit, { id: product.id })}>
-              <Button type='submit'>Editar</Button>
-            </Link>
-          </div>
-        </div>
-      );
-    });
+    return data.data.map((product) => <AdminProductCard key={product.id} product={product} />);
   };
 
   return (
