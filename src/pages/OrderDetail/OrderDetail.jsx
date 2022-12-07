@@ -1,14 +1,18 @@
-import { useParams } from 'react-router-dom';
+import { generatePath, useNavigate, useParams } from 'react-router-dom';
 import { useGetOrderByIdQuery } from '../../api/services/ecommerceApi';
+import { updateOrder } from '../../api/services/order';
 import AdminSideBar from '../../components/AdminSideBar/AdminSideBar';
 import Button from '../../components/Button/Button';
 import Footer from '../../components/Footer/Footer';
 import Spinner from '../../components/Spinner/Spinner';
+import routes from '../../consts/routes';
 import NavBar from '../../containers/NavBar/NavBar';
 import useAuth from '../../hooks/useAuth';
 
 const OrderDetail = () => {
   const params = useParams();
+
+  const navigate = useNavigate();
 
   const { data, isLoading } = useGetOrderByIdQuery(params.id);
 
@@ -21,9 +25,15 @@ const OrderDetail = () => {
   };
 
   const status = {
-    in_progress: "En progreso",
-    delivered: "Entregado",
-    pending: "Pendiente",
+    in_progress: 'En progreso',
+    delivered: 'Entregado',
+    pending: 'Pendiente',
+  };
+
+  const changeStatusOrder = async () => {
+    await updateOrder(data.data.id, 3);
+    alert('Orden finalizada');
+    navigate(routes.orderList);
   };
 
   return (
@@ -43,7 +53,9 @@ const OrderDetail = () => {
                 {data.data.orderStatus.name === 'in_progress' &&
                   authState.user.roles.includes('ROLE_ADMIN') && (
                     <div className='flex items-center h-full'>
-                      <Button>Finalizar orden</Button>
+                      <Button onClickHandler={changeStatusOrder}>
+                        Finalizar orden
+                      </Button>
                     </div>
                   )}
               </div>
