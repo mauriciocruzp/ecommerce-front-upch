@@ -2,7 +2,7 @@ import Input from "../../components/Input/Input";
 
 function CartItem({ item }) {
 
-  function getCategories(id) {
+  function getCategories() {
     return item.product.productCategories.map((category) => {
       return category.category.name;
 })};
@@ -18,12 +18,13 @@ function CartItem({ item }) {
           </div>
         </div>
 
-        <div className="w-20">
+        <div className="md:w-20 w-10">
           <Input
+            value={item.quantity}
             type="number"
             name="quantity"
             id="quantity"
-            placeholder={item.quantity}
+            placeholder="Cantidad"
             className="text-xl"
           />
         </div>
