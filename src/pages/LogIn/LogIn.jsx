@@ -9,6 +9,7 @@ import Input from '../../components/Input/Input';
 import TextError from '../../components/TextError/TextError';
 import useAuth from '../../hooks/useAuth';
 import './LogIn.css';
+import { Link } from 'react-router-dom';
 
 function LogIn() {
   const { setAccessToken, authState } = useAuth();
@@ -38,7 +39,6 @@ function LogIn() {
 
     if (response.status === 200) {
       setAccessToken(response.data.data.accessToken);
-      alert('Inicio de sesion exitoso');
       navigate('/');
       return;
     }
@@ -99,6 +99,15 @@ function LogIn() {
                     {errors.password && touched.password && (
                       <TextError>{errors.password}</TextError>
                     )}
+                  </div>
+                  <div className='pb-5'>
+                    <a
+                      className='text-gray-400 text-xl'
+                      navigate='/register'
+                    >
+                      ¿No tienes una cuenta?
+                      <Link to='/register'> <a className='text-purple-600 text-xl'>Registrate</a></Link>
+                    </a>
                   </div>
                   <div
                     className='btn-container'
