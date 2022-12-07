@@ -22,6 +22,7 @@ import routes from '../consts/routes';
 import ProductList from './ProductList/ProductList';
 import OrderDetail from './OrderDetail/OrderDetail';
 import OrderList from './OrderList/OrderList';
+import OrderListAdmin from './OrderListAdmin/OrderListAdmin';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
                   element={<UpdateProductForm />}
                 />
                 <Route path={routes.productList} element={<ProductList />} />
+                <Route path={routes.orderListAdmin} element={<OrderListAdmin />} />
               </Route>
               <Route path='/address/:id/list' element={<ListAddress />} />
               <Route path={routes.addressNew} element={<AddressForm />} />
