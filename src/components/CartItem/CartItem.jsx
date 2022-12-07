@@ -1,11 +1,49 @@
 import Input from "../../components/Input/Input";
+import { useState, useContext, useEffect } from "react";
+import CartContext from "../../context/CartContext";
+import { updateCart, deleteCartItem } from "../../api/services/cart";
+import capitalizeFirstLetter from "../../utils/capitalizeFirstLetter";
+import { update } from "../../reducers/cartReducer";
+import { useDispatch, useSelector } from 'react-redux';
 
 function CartItem({ item }) {
+  const [quantity, setQuantity] = useState(item.quantity);
+  const [visible, setVisible] = useState(true);
+  const { totalItems, setTotalItems, totalPrice, setTotalPrice } = useContext(CartContext);
+  const dispatch = useDispatch();
+
+
+  const maxQuantity = item.product.stock;
+
+  async function handleQuantityChange(e) {
+    const value = e.target.value;
+
+    if (value > maxQuantity || value < 1) {
+      e.target.className = "bg-gray-50 w-full rounded-md px-3 py-1 placeholder-gray-400 focus:outline-none focus:outline-pink-500";
+      return;
+    }
+
+    setTotalItems(totalItems - quantity + parseInt(value));
+    setTotalPrice(totalPrice - quantity * item.product.price + parseInt(value) * item.product.price);
+    setQuantity(parseInt(value));
+  
+    await updateCart(item.id, value);
+    
+    e.target.className = "bg-gray-50 w-full rounded-md px-3 py-1 placeholder-gray-400 focus:outline-none focus:outline-principal-purple";
+  }
 
   function getCategories() {
     return item.product.productCategories.map((category) => {
       return category.category.name;
-})};
+    });
+  }
+
+  function handleDelete() {
+    setVisible((prev) => !prev)
+    setTotalItems(totalItems - quantity);
+    setTotalPrice(totalPrice - quantity * item.product.price);
+    deleteCartItem(item.id)
+  }
 
   return (
     <>
@@ -13,8 +51,8 @@ function CartItem({ item }) {
         <div className="flex items-center gap-5 w-4/12">
           <img src={item.product.imageUrl} className="w-20 " />
           <div className="flex flex-col">
-            <p className="text-xl">{item.product.title}</p>
-            <p className="text-gray-400 text-lg">{getCategories()[0]}</p>
+            <p className="text-xl ">{item.product.title}</p>
+            <p className="text-gray-400 text-lg">{capitalizeFirstLetter(getCategories()[0])}</p>
           </div>
         </div>
 
