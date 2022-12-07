@@ -1,12 +1,44 @@
 import NavBar from "../../containers/NavBar/NavBar";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
-import CartContext from "../../context/CartContext";
-import { useContext } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from "react";
+import { getCart } from "../../api/services/cart";
 
 
 function Checkout() {
+  const [cart, setCart] = useState(null);
+  const [totalItems, setTotalItems] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await getCart();
+      setCart(response.data.data.orderItems);
+    }
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    if (cart) {
+      let total = 0;
+      cart.forEach((item) => {
+        total += item.quantity;
+      });
+      setTotalItems(total);
+
+    }
+  }, [cart]);
+
+  useEffect(() => {
+    if (cart) {
+      let total = 0;
+      cart.forEach((item) => {
+        total += item.quantity * item.product.price;
+      });
+
+      setTotalPrice(total);
+    }
+  }, [cart]);
 
   return (
     <>
@@ -47,9 +79,9 @@ function Checkout() {
                 <p className="text-xl font-semibold">Resumen de compra</p>
                 <hr className="bg-gray-300 my-2" />
                 <div className="w-full flex justify-center flex-col">
-                  <p className="text-xl text-gray-400 text-center my-10">Subtotal ({3} Articulos): <span className="font-semibold text-black">${8}</span></p>
+                  <p className="text-xl text-gray-400 text-center my-10">Subtotal ({totalItems} Articulos): <span className="font-semibold text-black">${totalPrice}</span></p>
                   <hr className="bg-gray-300 my-2" />
-                  <p className="text-xl text-gray-400 text-center my-10">Total : <span className="font-semibold text-black">${8}</span></p>
+                  <p className="text-xl text-gray-400 text-center my-10">Total : <span className="font-semibold text-black">${totalPrice}</span></p>
                 </div>
               </div>
             </div>
