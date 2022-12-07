@@ -6,6 +6,7 @@ import { Formik } from 'formik';
 import { createUser } from '../../api/services/user';
 import { useNavigate } from 'react-router-dom';
 import Register from '../../assets/svg/register.svg'
+import { Link } from 'react-router-dom';
 
 function SignUp() {
 
@@ -40,11 +41,10 @@ function SignUp() {
   });
 
   async function hadleSubmit(values) {
-    console.debug("antes");
+    console.log(values);
     const response = await createUser(values.email, values.password, values.firstName, values.lastName, values.dateOfBirth);
 
     if (response.status == 201) {
-      alert('Usuario creado');
       navigate('/login');
       return
     }
@@ -73,7 +73,7 @@ function SignUp() {
             <div className='w-2/3'>
                 <h1 className='pb-2 text-5x.l'>Crea tu cuenta</h1>
                 <p className='pb-2 text-4x-l'> Crea hoy tu cuenta y empieza a disfrutar de nuestros beneficios</p>
-                <form onSubmit={hadleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <div className='mt-6'>
                     <Input
                     id='firstName'
@@ -160,8 +160,7 @@ function SignUp() {
                     </div>
                     <div>
                       <p style={{ marginRight: '5px' }}>¿Ya tienes cuenta? </p>
-                      <a href='#'>Inicia sesión</a>
-                    </div>
+                      <Link to='/login'> <a className='text-purple-600 text-xl'>Iniciar Sesion</a></Link>                    </div>
                 </form>
             </div>
           </div>
