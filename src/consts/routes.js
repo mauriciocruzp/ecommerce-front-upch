@@ -14,9 +14,8 @@ const routes = {
     addressDetail: '/address/:id',
     cart: '/cart',
     checkout: '/checkout',
-    order: '/order',
+    orderList: '/order',
     orderDetail: '/order/:id',
-    orderList: '/order/list',
     orderNew: '/order/new',
     orderEdit: '/order/:id/edit',
 };
