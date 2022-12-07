@@ -8,6 +8,7 @@ import ProductDetail from './ProductDetail/ProductDetail';
 import SignUp from './SignUp/SignUp';
 import AddressForm from './AddressForm/AddressForm';
 import UpdateAddress from './UpdateAddress/UpdateAddress';
+import ListAddress from './ListAddress/ListAddress';
 import NotFound from './NotFound/NotFound';
 import AuthRoute from '../components/AuthRoute/AuthRoute';
 import Checkout from './Checkout/Checkout';
@@ -17,6 +18,8 @@ import AdminRoute from '../components/AdminRoute/AdminRoute';
 import { Provider } from 'react-redux';
 import { store } from '../store';
 import UpdateProductForm from './UpdateProductForm/UpdateProductForm';
+import routes from '../consts/routes';
+import ProductList from './ProductList/ProductList';
 
 function App() {
   return (
@@ -26,23 +29,31 @@ function App() {
           <Routes>
             <Route element={<AuthRoute />}>
               <Route element={<AdminRoute />}>
-                <Route path='/admin' element={<Admin />} />
-                <Route path='/product/new' element={<CreateProductForm />} />
+                <Route path={routes.admin} element={<Admin />} />
                 <Route
-                  path='/product/:id/edit'
+                  path={routes.productNew}
+                  element={<CreateProductForm />}
+                />
+                <Route
+                  path={routes.productEdit}
                   element={<UpdateProductForm />}
                 />
+                <Route path={routes.productList} element={<ProductList />} />
               </Route>
-              <Route path='/addressform' element={<AddressForm />} />
-              <Route path='/cart' element={<Cart />} />
-              <Route path='/checkout' element={<Checkout />} />
-              <Route path='/address/:id/update' element={<UpdateAddress/>}></Route>
+              <Route path={routes.addressList} element={<ListAddress/>}/>
+              <Route path={routes.addressNew} element={<AddressForm />} />
+              <Route path={routes.cart} element={<Cart />} />
+              <Route path={routes.checkout} element={<Checkout />} />
+              <Route
+                path={routes.addressEdit}
+                element={<UpdateAddress />}
+              ></Route>
             </Route>
-            <Route path='/' element={<Home />} />
-            <Route path='/register' element={<SignUp />} />
-            <Route path='/login' element={<LogIn />} />
-            <Route path='/product/:id' element={<ProductDetail />} />
-            <Route path='/product' element={<SearchPage />} />
+            <Route path={routes.home} element={<Home />} />
+            <Route path={routes.register} element={<SignUp />} />
+            <Route path={routes.login} element={<LogIn />} />
+            <Route path={routes.productDetail} element={<ProductDetail />} />
+            <Route path={routes.productSearch} element={<SearchPage />} />
             <Route path='/*' element={<NotFound />} />
           </Routes>
         </AuthProvider>

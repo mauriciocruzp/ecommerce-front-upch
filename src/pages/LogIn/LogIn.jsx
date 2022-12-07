@@ -14,8 +14,10 @@ function LogIn() {
   const { setAccessToken, authState } = useAuth();
 
   useEffect(() => {
-    console.log(authState);
-  }, [authState]);
+    if (authState.accessToken) {
+      navigate('/');
+    }
+  }, []);
 
   const navigate = useNavigate();
 
@@ -59,7 +61,6 @@ function LogIn() {
         handleSubmit,
       }) => (
         <div>
-          {console.log(errors)}
           <div className='h-screen flex justify-between items-center'>
             <div className='w-2/3 h-full grid justify-items-center items-center'>
               <div className='w-2/3'>

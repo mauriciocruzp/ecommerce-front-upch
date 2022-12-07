@@ -1,6 +1,6 @@
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
-import City from "../../assets/svg/city_buildings.svg";
+import Check from '../../assets/svg/Checklist _Monochromatic.svg'
 import { useNavigate, useParams } from "react-router-dom";
 import NavBar from "../../containers/NavBar/NavBar";
 import { Formik } from "formik";
@@ -35,16 +35,20 @@ function UpdateAddress() {
   });
   const handleSubmit = async (values) => {
     const response = await updateAddress(
+      params.id,
       values.street,
       values.zipcode,
       values.state,
       values.country
     );
+    console.log(response)
     if (response.status === 200) {
       alert("Direccion actualizada correctamente");
       navigate("/");
       return;
     }
+    alert(response.data.message);
+    return
   };
   return (
     <>
@@ -53,7 +57,7 @@ function UpdateAddress() {
       <div className="h-screen flex justify-between items-center">
         <div className="w-2/3 h-full grid justify-items-center items-center">
           <div className="w-2/3">
-            <h1 className="pb-2 text-5x-l">Edita tu direccion</h1>
+            <h1 className="pb-2 text-5x-l">Actualiza tu direccion</h1>
             {isLoadingAddress ? (
               <Spinner />
             ) : (
@@ -147,7 +151,7 @@ function UpdateAddress() {
                           width="w-full"
                           type="submit"
                         >
-                          Agregar dirección
+                          Actualiza tu dirección
                         </Button>
                       </div>
                     </form>
@@ -159,7 +163,7 @@ function UpdateAddress() {
         </div>
 
         <div className="bg-purple w-2/3 h-full flex flex-col justify-center items-center ">
-          <img src={City} alt="homeimg" className="img" />
+          <img src={Check} alt="homeimg" className="img" />
         </div>
       </div>
     </>

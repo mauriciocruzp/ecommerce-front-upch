@@ -6,7 +6,8 @@ export async function createProduct(
   price,
   stock,
   imageUrl,
-  categoryIds
+  categoryIds,
+  productStatusId
 ) {
   try {
     const response = await axiosInstance.post(
@@ -18,7 +19,7 @@ export async function createProduct(
         stock,
         imageUrl,
         categoryIds,
-        productStatusId: 1,
+        productStatusId,
       },
       {
         headers: {
@@ -41,7 +42,8 @@ export async function updateProduct(
   price,
   stock,
   imageUrl,
-  categoryIds
+  categoryIds,
+  productStatusId
 ) {
   try {
     const response = await axiosInstance.put(
@@ -53,6 +55,7 @@ export async function updateProduct(
         stock,
         imageUrl,
         categoryIds,
+        productStatusId,
       },
       {
         headers: {
