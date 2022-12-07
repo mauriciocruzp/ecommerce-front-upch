@@ -49,7 +49,7 @@ export default function OrderCard({ order }) {
               </span>
             </p>
           </div>
-          <Link to={`/order/detail/${order.id}`}>
+          <Link to={`/order/${order.id}`}>
             <Button className="bg-principal-purple text-white">
               Ver detalle
             </Button>
