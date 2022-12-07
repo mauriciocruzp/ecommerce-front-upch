@@ -24,7 +24,7 @@ const OrderDetail = () => {
     <>
       <NavBar />
       <div className='flex'>
-        <AdminSideBar />
+        {authState.user.roles.includes('ROLE_ADMIN') && <AdminSideBar />}
         <div className='flex flex-col gap-4 px-16 py-8 min-h-screen w-full'>
           {isLoading ? (
             <div className='h-screen flex justify-center pt-10'>
