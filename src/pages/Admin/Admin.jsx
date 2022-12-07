@@ -1,29 +1,36 @@
-import './Admin.css'
 import { Link } from 'react-router-dom';
 import NavBar from '../../containers/NavBar/NavBar';
-function Admin() {
+// import HomeSvg from '../../assets/svg/home.svg';
+// import ProductSvg from '../../assets/svg/product.svg';
+// import OrderSvg from '../../assets/svg/order.svg';
+import Button from '../../components/Button/Button';
+import StatsCard from '../../containers/Card/StatsCard';
+import OrderCard from '../../containers/Card/OrderCard';
+import routes from '../../consts/routes';
+import AdminSideBar from '../../components/AdminSideBar/AdminSideBar';
 
+function Admin() {
   return (
-    <>
-    <NavBar />
-      <div className="admin">
-        <div className="admin-buttons">
-          <Link to="/new-product">
-            <div className="admin-button">
-              <div className='image-admin-button'><svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" fill="white" className="bi bi-plus-square-fill" viewBox="0 0 16 16">
-                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
-              </svg></div>
-              <h3 className="ab-text">Agregar producto</h3>
-            </div>
-          </Link>
-          <div className="admin-button"></div>
-          <div className="admin-button"></div>
-          <div className="admin-button"></div>
-          <div className="admin-button"></div>
-          <div className="admin-button"></div>
+    <div className='h-screen'>
+      <NavBar />
+      <div className='flex h-full'>
+        <AdminSideBar />
+        <div className='w-4/5 px-32 py-5 bg-white flex flex-col gap-8'>
+          <div className='flex w-full justify-between items-center'>
+            <h1>Reporte de ventas</h1>
+            <Link to={routes.productNew}>
+              <Button type='submit'>Nuevo producto</Button>
+            </Link>
+          </div>
+
+          <div className='flex justify-between flex-wrap h-4/5'>
+            <h5>
+              Proximamente se mostrará estadisticas de la tienda, gracias!
+            </h5>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
