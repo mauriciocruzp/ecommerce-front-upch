@@ -1,7 +1,7 @@
-import jwtDecode from 'jwt-decode';
 import { useReducer } from 'react';
 
 import authReducer from '../../reducers/authReducer';
+import { decodeJWT } from '../../utils/jwt';
 import AuthContext from './AuthContext';
 
 const INITIAL_STATE = {
@@ -21,7 +21,7 @@ const AuthProvider = ({ children }) => {
 
     if (accessToken === null) return initialState;
 
-    const { userId: id, fullName, sub: email, roles } = jwtDecode(accessToken);
+    const { userId: id, fullName, sub: email, roles } = decodeJWT(accessToken);
 
     const user = {
       id,

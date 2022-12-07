@@ -4,7 +4,8 @@ const BASE_URL = 'http://127.0.0.1:8080/api';
 
 // Define a service using a base URL and expected endpoints
 export const ecommerceApi = createApi({
-  reducerPath: 'pokemonApi',
+  reducerPath: 'ecommerceApi',
+  refetchOnMountOrArgChange: true,
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
     prepareHeaders: (headers) => {
