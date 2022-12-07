@@ -2,7 +2,6 @@ import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import * as Yup from 'yup';
 import Checklist from "../../assets/svg/city_buildings.svg";
-import './Addressform.css'
 import { useNavigate } from "react-router-dom";
 import { Formik } from "formik";
 import { createAddress } from "../../api/services/address"
@@ -71,7 +70,7 @@ function AddressForm() {
                         name="street"
                         text="Calle:"
                         type="text"
-                        placeholder="Ej: Avenida Rio Tulija" 
+                        placeholder="Ej: Avenida Rio Tulija"
                         value={values.street}
                         handleChange={handleChange}
                         handleBlur={handleBlur}/>
@@ -110,7 +109,7 @@ function AddressForm() {
                         id="country"
                         text="Pais:"
                         type="text"
-                        placeholder="Ej: Mexico" 
+                        placeholder="Ej: Mexico"
                         value={values.country}
                         handleChange={handleChange}
                         handleBlur={handleBlur}/>
