@@ -31,7 +31,7 @@ const AdminSideBar = () => {
           <li>Productos</li>
         </NavLink>
         <NavLink
-          to={routes.orderList}
+          to={routes.orderListAdmin}
           className={({ isActive }) =>
             isActive ? activeClassName : normalClassName
           }

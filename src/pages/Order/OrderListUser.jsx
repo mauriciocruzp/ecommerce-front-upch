@@ -2,8 +2,10 @@ import NavBar from "../../containers/NavBar/NavBar";
 import OrderCard from "../../components/OrderCard/OrderCard";
 import { useGetOrdersByUserIdQuery } from "../../api/services/ecommerceApi.js";
 import Spinner from "../../components/Spinner/Spinner";
+import { useParams } from "react-router-dom";
 
 export default function OrderListUser() {
+  const params = useParams();
 
   const { data, isLoading } = useGetOrdersByUserIdQuery();
 

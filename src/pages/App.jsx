@@ -20,6 +20,9 @@ import { store } from '../store';
 import UpdateProductForm from './UpdateProductForm/UpdateProductForm';
 import routes from '../consts/routes';
 import ProductList from './ProductList/ProductList';
+import OrderDetail from './OrderDetail/OrderDetail';
+import OrderList from './OrderList/OrderList';
+import OrderListAdmin from './OrderListAdmin/OrderListAdmin';
 
 function App() {
   return (
@@ -39,15 +42,15 @@ function App() {
                   element={<UpdateProductForm />}
                 />
                 <Route path={routes.productList} element={<ProductList />} />
+                <Route path={routes.orderListAdmin} element={<OrderListAdmin />} />
               </Route>
               <Route path={routes.addressList} element={<ListAddress/>}/>
               <Route path={routes.addressNew} element={<AddressForm />} />
               <Route path={routes.cart} element={<Cart />} />
               <Route path={routes.checkout} element={<Checkout />} />
-              <Route
-                path={routes.addressEdit}
-                element={<UpdateAddress />}
-              ></Route>
+              <Route path={routes.addressEdit} element={<UpdateAddress />} />
+              <Route path={routes.orderList} element={<OrderList />} />
+              <Route path={routes.orderDetail} element={<OrderDetail />} />
             </Route>
             <Route path={routes.home} element={<Home />} />
             <Route path={routes.register} element={<SignUp />} />
