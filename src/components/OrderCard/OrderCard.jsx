@@ -22,6 +22,7 @@ export default function OrderCard({ order }) {
   const status = {
     in_progress: "En progreso",
     delivered: "Entregado",
+    pending: "Pendiente",
   };
 
   return (
