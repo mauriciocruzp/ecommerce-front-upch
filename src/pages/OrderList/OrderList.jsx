@@ -1,61 +1,45 @@
 import NavBar from "../../containers/NavBar/NavBar";
-import { useEffect, useState } from "react";
-import HomeSvg from '../../assets/svg/home.svg';
-import ProductSvg from '../../assets/svg/product.svg';
-import OrderSvg from '../../assets/svg/order.svg';
-import OrderCard from "../../containers/Card/OrderCard";
-import {useGetOrderQuery} from '../../api/services/ecommerceApi';
+import OrderCard from "../../components/OrderCard/OrderCard";
+import { useGetOrdersByUserIdQuery } from "../../api/services/ecommerceApi.js";
 import Spinner from "../../components/Spinner/Spinner";
 
+export default function OrderListUser() {
 
-function OrderList () {
-
-  const {data, isLoading} = useGetOrderQuery()
+  const { data, isLoading } = useGetOrdersByUserIdQuery();
 
   function renderOrders() {
     return data.data.map((order) => {
       return <OrderCard key={order.id} order={order} />;
     });
   }
+  return (
+    <>
+      <NavBar />
+      <div className="mx-4 pt-5 pl-5 mt-4">
+        <p className="text-2xl font-semibold">Mis pedidos</p>
+      </div>
 
-    return(
-        <>
-        <NavBar />
-        <div className="flex bg-white">
-          <div className='w-1/5 pl-8 pt-5 flex flex-col gap-4'>
-            <h2>Panel de control</h2>
-            <ul className='flex flex-col gap-4'>
-              <div className='flex gap-2'>
-                <img src={HomeSvg} className='w-4' />
-                <li>Home</li>
-              </div>
-              <div className='flex gap-2'>
-                <img src={ProductSvg} className='w-4' />
-                <li>Productos</li>
-              </div>
-              <div className='flex gap-2'>
-                <img src={OrderSvg} className='w-4' />
-                <li>Ordenes</li>
-              </div>
-            </ul>
+      <hr className="bg-gray-300 mx-6" />
+
+      {data ? (
+        isLoading ? (
+          <div className="w-full flex justify-center items-center">
+            <Spinner />
           </div>
-          {isLoading ? (
-            <div className='w-full flex justify-center'>
-              <h1>Ordenes</h1>
-              <Spinner />
-            </div>
-          ) : (
-            <div className='w-4/5 pl-32 py-4 flex flex-col'>
-              <div className='flex flex-col sm:space-y-6'>
-                <h1>Ordenes</h1>
-                {renderOrders()}
-              </div>
-            </div>
-          )}
-          
+        ) : (
+          <div className="flex flex-col gap-4 mx-40 mt-4">{renderOrders()}</div>
+        )
+      ) : isLoading ? (
+        <div className="w-full flex justify-center items-center">
+          <Spinner />
         </div>
-        </>
-    );
-}
+      ) : (
+        <div className="w-full flex justify-center items-center">
+          <p>No hay pedidos</p>
+        </div>
+      )}
 
-export default OrderList;
+      <div className="flex flex-col gap-4 mx-40 mt-4"></div>
+    </>
+  );
+}
