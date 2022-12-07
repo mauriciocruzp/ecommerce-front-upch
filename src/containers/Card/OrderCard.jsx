@@ -1,12 +1,15 @@
 import React from "react";
 import {useEffect, useState} from "react";
 import Button from "../../components/Button/Button";
+import {Link, useNavigate} from "react-router-dom";
+import { data } from "autoprefixer";
 
-const OrderCard = ({}) => {
 
-  const isAuthenticated = false;
+const OrderCard = ({order}) => {
 
-  const username = "user 0"
+  const navigate = useNavigate();
+
+
 
   return(
     <div className="flex flex-row bg-gray-300 rounded-md pl-2 px-3 py-1">
@@ -16,14 +19,24 @@ const OrderCard = ({}) => {
         </svg>
       </div>
       <div>
-        <h2>Orden no. # - <span>Por {isAuthenticated ? " " + username : ""}</span> </h2>
-        <p>Comprado el <b>dd/mm/aaaa</b></p>
-        <p>Productos adquiridos: <b>####</b></p>
-        <p>Estado: <b>Status</b></p>
-        <p>Total: <b>$####</b></p>
+        <Link to={`/order/${order.id}`}>
+          <h2>Orden no. # - <span>Por ${order.products.user.firstName} </span> </h2>
+        </Link>
+        <Link>
+          <p>Comprado el <b> #### </b></p>
+        </Link>
+        <Link to={`order/${order.id}`}>
+          <p>Productos adquiridos: <b>${data.data.products.length}</b></p>
+        </Link>
+        <Link to={`/order/${order.id}`}>
+          <p>Estado: <b> ${order.orderStatus} </b></p>
+        </Link>
+        <Link>
+          <p>Total: <b>$####</b></p>
+        </Link>
       </div>
       <div className=" flex flex-col justify-end">
-        <Button className="" >Detalles</Button>
+          <Button onClickHandler={ navigate(`/home`)}>Detalles</Button>
       </div>
     </div>
   );
