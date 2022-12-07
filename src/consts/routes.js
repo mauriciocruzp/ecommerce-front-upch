@@ -18,6 +18,7 @@ const routes = {
     orderDetail: '/order/:id',
     orderNew: '/order/new',
     orderEdit: '/order/:id/edit',
+    orderListAdmin: '/order/admin',
 };
 
 export default routes;
