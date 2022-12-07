@@ -5,17 +5,20 @@ import Button from '../../components/Button/Button';
 import Footer from '../../components/Footer/Footer';
 import Spinner from '../../components/Spinner/Spinner';
 import NavBar from '../../containers/NavBar/NavBar';
+import useAuth from '../../hooks/useAuth';
 
 const OrderDetail = () => {
   const params = useParams();
 
   const { data, isLoading } = useGetOrderByIdQuery(params.id);
 
-  function getTotalPrice() {
+  const { authState } = useAuth();
+
+  const getTotalPrice = () => {
     return data.data.orderItems.reduce((acc, item) => {
       return acc + item.product.price * item.quantity;
     }, 0);
-  }
+  };
 
   return (
     <>
@@ -23,19 +26,21 @@ const OrderDetail = () => {
       <div className='flex'>
         <AdminSideBar />
         <div className='flex flex-col gap-4 px-16 py-8 min-h-screen w-full'>
-          <div className='flex justify-between'>
-            <h1>Detalle del pedido</h1>
-            <div className='flex items-center h-full'>
-              <Button>Finalizar orden</Button>
-            </div>
-          </div>
-
           {isLoading ? (
             <div className='h-screen flex justify-center pt-10'>
               <Spinner />
             </div>
           ) : (
             <>
+              <div className='flex justify-between'>
+                <h1>Detalle del pedido</h1>
+                {data.data.orderStatus.name === 'in_progress' &&
+                  authState.user.roles.includes('ROLE_ADMIN') && (
+                    <div className='flex items-center h-full'>
+                      <Button>Finalizar orden</Button>
+                    </div>
+                  )}
+              </div>
               <p>
                 Numero de pedido:&nbsp;
                 <span className='font-medium'>{data.data.id}</span>
