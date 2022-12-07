@@ -36,7 +36,7 @@ function ListAddres() {
           </div>
           <div className='flex gap-8'>
             <Link to={generatePath(routes.addressEdit, { id: address.id })}>
-              <Button type='submit'>Editar</Button>
+              <Button type='submit'>Editar direccion</Button>
             </Link>
           </div>
         </div>
