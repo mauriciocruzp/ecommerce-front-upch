@@ -4,13 +4,16 @@ import Button from "../../components/Button/Button";
 import CartItem from "../../components/CartItem/CartItem";
 import NavBar from "../../containers/NavBar/NavBar";
 import CartContext from "../../context/CartContext";
-
-import { Link } from "react-router-dom";
+import Spinner from "../../components/Spinner/Spinner";
+import { useNavigate } from "react-router-dom";
 
 function Cart() {
   const [cart, setCart] = useState(null);
   const [totalItems, setTotalItems] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [isLoading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
@@ -34,7 +37,6 @@ function Cart() {
       });
       setTotalPrice(totalPrices);
       setTotalItems(totalItemss);
-      dispatch(update({ totalItems: totalItemss, totalPrice: totalPrices }));
     }
   }, [cart]);
 
@@ -89,8 +91,15 @@ function Cart() {
 
                 <hr className="bg-gray-300" />
 
-                {cart || totalItems < 0 ? (
-                  <div className="w-full flex justify-center">
+                {cart && totalItems > 0 ? (
+                  isLoading ? (
+                    <div className="w-full flex justify-center">
+                    <p className="text-xl text-gray-400 text-center my-10">
+                      Tu carrito de compras esta vacio
+                    </p>
+                  </div>
+                  ) : (
+                    <div className="w-full flex justify-center">
                     <p className="text-xl text-gray-400 text-center my-10">
                       Subtotal ({totalItems} Articulos):{" "}
                       <span className="font-semibold text-black">
@@ -98,6 +107,8 @@ function Cart() {
                       </span>
                     </p>
                   </div>
+                  )
+
                 ) : (
                   <div className="w-full flex justify-center">
                     <p className="text-xl text-gray-400 text-center my-10">
@@ -108,7 +119,7 @@ function Cart() {
 
                 <hr className="bg-gray-300" />
 
-                {cart ? (
+                {cart && totalItems > 0 ? (
                   <Button
                     onClickHandler={() => navigate("/checkout")}
                     children={"Proceder al pago"}
@@ -128,3 +139,5 @@ function Cart() {
 }
 
 export default Cart;
+
+
