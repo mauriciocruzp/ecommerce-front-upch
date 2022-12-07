@@ -2,11 +2,15 @@ import Input from "../../components/Input/Input";
 import { useState, useContext, useEffect } from "react";
 import CartContext from "../../context/CartContext";
 import { updateCart, deleteCartItem } from "../../api/services/cart";
+import capitalizeFirstLetter from "../../utils/capitalizeFirstLetter";
+import { update } from "../../reducers/cartReducer";
+import { useDispatch, useSelector } from 'react-redux';
 
 function CartItem({ item }) {
   const [quantity, setQuantity] = useState(item.quantity);
   const [visible, setVisible] = useState(true);
   const { totalItems, setTotalItems, totalPrice, setTotalPrice } = useContext(CartContext);
+  const dispatch = useDispatch();
 
 
   const maxQuantity = item.product.stock;
@@ -23,15 +27,9 @@ function CartItem({ item }) {
     setTotalPrice(totalPrice - quantity * item.product.price + parseInt(value) * item.product.price);
     setQuantity(parseInt(value));
   
-    const response = await updateCart(item.id, value);
-    console.log(response);
-
-    if (response.status === 200) {
-      console.log("ok");
-    }
+    await updateCart(item.id, value);
     
     e.target.className = "bg-gray-50 w-full rounded-md px-3 py-1 placeholder-gray-400 focus:outline-none focus:outline-principal-purple";
-    console.log(value);
   }
 
   function getCategories() {
@@ -42,27 +40,25 @@ function CartItem({ item }) {
 
   function handleDelete() {
     setVisible((prev) => !prev)
+    setTotalItems(totalItems - quantity);
+    setTotalPrice(totalPrice - quantity * item.product.price);
     deleteCartItem(item.id)
   }
 
   return (
     <>
-    {visible && (
       <div className="h-32 flex justify-around items-center w-full border-b-2 rounded-sm my-2">
         <div className="flex items-center gap-5 w-4/12">
           <img src={item.product.imageUrl} className="w-20 " />
           <div className="flex flex-col">
             <p className="text-xl ">{item.product.title}</p>
-            <p className="text-gray-400 text-lg">{getCategories()[0]}</p>
+            <p className="text-gray-400 text-lg">{capitalizeFirstLetter(getCategories()[0])}</p>
           </div>
         </div>
 
         <div className="md:w-20 w-10">
           <Input
-            value={quantity}
-            handleChange={handleQuantityChange}
-            handleBlur={handleQuantityChange}
-            min={1}
+            value={item.quantity}
             type="number"
             name="quantity"
             id="quantity"
@@ -76,7 +72,7 @@ function CartItem({ item }) {
         </div>
 
         <div className="w-20 flex justify-center">
-            <button onClick={handleDelete}>
+          <button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="42"
@@ -90,7 +86,6 @@ function CartItem({ item }) {
           </button>
         </div>
       </div>
-    )}
     </>
   );
 }
