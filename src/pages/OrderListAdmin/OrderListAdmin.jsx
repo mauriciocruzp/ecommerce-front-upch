@@ -1,5 +1,6 @@
 import { useGetOrdersQuery } from '../../api/services/ecommerceApi';
 import AdminSideBar from '../../components/AdminSideBar/AdminSideBar';
+import Footer from '../../components/Footer/Footer';
 import OrderCard from '../../components/OrderCard/OrderCard';
 import Spinner from '../../components/Spinner/Spinner';
 import NavBar from '../../containers/NavBar/NavBar';
@@ -13,7 +14,7 @@ const OrderListAdmin = () => {
     });
   }
   return (
-    <div className='h-screen'>
+    <>
       <NavBar />
       <div className='flex h-full'>
         <AdminSideBar />
@@ -47,7 +48,8 @@ const OrderListAdmin = () => {
           <div className='flex flex-col gap-4 mx-40 mt-4'></div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
