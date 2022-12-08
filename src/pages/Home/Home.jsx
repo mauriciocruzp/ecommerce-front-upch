@@ -25,7 +25,9 @@ function Home() {
             <Spinner />
           </div>
         ) : (
-          <div className='w-full flex flex-wrap justify-around mt-5 gap-8'>{renderProducts()}</div>
+          <div className='w-full flex flex-wrap justify-between mt-5 gap-8'>
+            {renderProducts()}
+          </div>
         )}
       </div>
       <Footer />
